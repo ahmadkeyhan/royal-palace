@@ -1,0 +1,115 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "rooms": "Rooms",
+    "facilities": "Facilities",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "book_now": "Book Now",
+    "learn_more": "Learn More",
+    "view_all": "View All",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "menu": "Menu"
+  },
+  "header": {
+    "logo_alt": "Bank Hotel Logo",
+    "navigation": {
+      "home": "Home",
+      "about": "About Us",
+      "rooms": "Rooms & Suites",
+      "facilities": "Facilities",
+      "gallery": "Gallery",
+      "contact": "Contact"
+    }
+  },
+  "banner": {
+    "title": "Welcome to Bank Hotel",
+    "subtitle": "Experience Luxury Like Never Before",
+    "description": "Discover unparalleled comfort and elegance in the heart of the city. Our premium accommodations offer world-class amenities and exceptional service.",
+    "cta_primary": "Book Your Stay",
+    "cta_secondary": "Explore Rooms"
+  },
+  "about": {
+    "title": "About Bank Hotel",
+    "subtitle": "A Legacy of Excellence",
+    "description": "For over a century, Bank Hotel has been synonymous with luxury, comfort, and impeccable service. Located in a beautifully restored historic building, we combine timeless elegance with modern amenities.",
+    "features": {
+      "heritage": "Historic Heritage",
+      "service": "Premium Service",
+      "location": "Prime Location",
+      "amenities": "Modern Amenities"
+    }
+  },
+  "rooms": {
+    "title": "Rooms & Suites",
+    "subtitle": "Luxury Accommodations",
+    "description": "Choose from our carefully designed rooms and suites, each offering unique comfort and style.",
+    "types": {
+      "standard": "Standard Room",
+      "deluxe": "Deluxe Room",
+      "suite": "Executive Suite",
+      "presidential": "Presidential Suite"
+    },
+    "amenities": {
+      "wifi": "Free WiFi",
+      "ac": "Air Conditioning",
+      "minibar": "Mini Bar",
+      "safe": "In-room Safe",
+      "tv": "Smart TV",
+      "bathroom": "Luxury Bathroom"
+    }
+  },
+  "facilities": {
+    "title": "Our Facilities",
+    "subtitle": "World-Class Amenities",
+    "description": "Enjoy our comprehensive range of facilities designed for your comfort and convenience.",
+    "list": {
+      "spa": "Luxury Spa & Wellness",
+      "restaurant": "Fine Dining Restaurant",
+      "bar": "Rooftop Bar & Lounge",
+      "gym": "Fitness Center",
+      "pool": "Swimming Pool",
+      "business": "Business Center",
+      "parking": "Valet Parking",
+      "concierge": "24/7 Concierge"
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Discover Our Spaces",
+    "description": "Take a visual journey through our elegant spaces and luxurious accommodations."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in Touch",
+    "description": "We're here to help make your stay unforgettable. Contact us for reservations or inquiries.",
+    "info": {
+      "address": "123 Banking Street, Financial District",
+      "phone": "+1 (555) 123-4567",
+      "email": "info@bankhotel.com"
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "message": "Message",
+      "send": "Send Message"
+    }
+  },
+  "footer": {
+    "description": "Experience luxury and comfort at Bank Hotel, where every detail is crafted for your perfect stay.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "careers": "Careers"
+    },
+    "social": {
+      "follow": "Follow Us"
+    },
+    "copyright": "© 2024 Bank Hotel. All rights reserved."
+  }
+}
