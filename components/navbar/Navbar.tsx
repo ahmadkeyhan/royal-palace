@@ -5,14 +5,20 @@ import MobileNav from "../mobileNavbar/MobileNav";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { useLanguage } from "@/contexts/LanguageContext"
+import { LanguageSwitcher } from "@/components/language-switcher"
+import { MobileLanguageSwitcher } from "@/components/mobile-language-switcher"
+import { RTLAwareFlex } from "@/components/rtl-aware-flex"
+
 const Navbar = () => {
+  const { t, isRTL } = useLanguage()
   const [menuState, setMenuState] = useState<boolean>(false);
 
   const pathname = usePathname();
 
   return (
     <nav className="bg-[#313F38] max-[1200px]:sticky top-0 left-0 z-30 w-full pb-1 border-[1px] border-transparent text-white">
-      <div className="flex items-center justify-between m-[auto] py-1 w-[95%]">
+      <RTLAwareFlex justify="between" align="center" className="m-[auto] py-1 w-[95%]">
         <h2 className="scroll-m-20  text-3xl font-semibold tracking-tight first:mt-2">
           BankHotel
         </h2>
@@ -99,11 +105,19 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
+        <div className="hidden min-[1200px]:flex items-center space-x-4">
+            <LanguageSwitcher />
+            {/* <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+              {t("common.book_now")}
+            </Button> */}
+          </div>
         <p className="font-helvetica [&:not(:first-child)]:mt-2 sm:hidden min-[1200px]:flex min-[100px]:hidden">
           {" "}
           +234 781 52 952{" "}
         </p>
-        {menuState ? (
+        <div className="min-[1200px]:hidden flex items-center gap-2">
+          <MobileLanguageSwitcher />
+{menuState ? (
           <span
             onClick={() => setMenuState((prev) => !prev)}
             className="text-[25px] cursor-pointer min-[1200px]:hidden max-[1200px]:block"
@@ -137,7 +151,9 @@ const Navbar = () => {
             </svg>
           </span>
         )}
-      </div>
+        </div>
+        
+      </RTLAwareFlex>
 
       {menuState && (
         <MobileNav menuState={menuState} setMenuState={setMenuState} />
