@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { AnimatePresence, motion, Variant } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface INav {
-  name: string;
-  link: string;
+  key: string;
+  href: string;
 }
 
 interface IMenuState {
@@ -19,30 +20,12 @@ interface IVariants {
 
 const MobileNav = React.memo((props: IMenuState) => {
   const [navLinks, setNavLinks] = useState<INav[]>([
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "About",
-      link: "/about",
-    },
-    {
-      name: "Rooms",
-      link: "/rooms",
-    },
-    {
-      name: "Facilities",
-      link: "/facility",
-    },
-    {
-      name: "Book a room",
-      link: "/booking",
-    },
-    {
-      name: "Contacts",
-      link: "/contacts",
-    },
+    { key: "home", href: "/" },
+    { key: "about", href: "/about" },
+    { key: "rooms", href: "/rooms" },
+    { key: "facilities", href: "/facility" },
+    { key: "book a room", href: "/booking" },
+    { key: "contact", href: "/contacts" },
   ]);
 
   const menuLinks: IVariants = {
@@ -87,6 +70,8 @@ const MobileNav = React.memo((props: IMenuState) => {
     },
   };
 
+  const { t, isRTL } = useLanguage();
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -98,9 +83,9 @@ const MobileNav = React.memo((props: IMenuState) => {
       >
         <div className="flex flex-col items-start justify-between h-full gap-[20px] pb-3 ">
           <div className="flex items-center justify-between  w-[95%] mx-auto ">
-            <p className="text-[28px] w-full font-semibold tracking-tight first:mt-2">
-              BankHotel
-            </p>
+            <h1 className="text-[28px] w-full tracking-tight first:mt-2">
+              {t('common.royal_palace')}
+            </h1>
             <p
               onClick={() => props.setMenuState((prev: boolean) => !prev)}
               className="text-[25px] cursor-pointer min-[1200px]:hidden max-[1200px]:block "
@@ -142,14 +127,14 @@ const MobileNav = React.memo((props: IMenuState) => {
             </motion.div>
           </AnimatePresence>
           <div className="flex flex-col  w-full items-center gap-[20px]">
-            <p className="font-helvetica text-center [&:not(:first-child)]:mt-2 min-[1200px]:text-[30px] min-[800px]:text-[27px] min-[500px]:text-[24px] max-[500px]:text-[20px] ">
+            <p className=" text-center [&:not(:first-child)]:mt-2 min-[1200px]:text-[30px] min-[800px]:text-[27px] min-[500px]:text-[24px] max-[500px]:text-[20px] ">
               {" "}
               +234 781 52 952{" "}
             </p>
-            <p className="leading-7 text-center underline underline-offset-1 font-helvetica ">
+            <p className="leading-7 text-center underline underline-offset-1  ">
               6A - ANTHONY HOROWITZ WAY, LEKKI{" "}
             </p>
-            <ul className="flex items-center justify-center gap-[20px] font-helvetica ">
+            <ul className="flex items-center justify-center gap-[20px]  ">
               <li>FACEBOOK</li>
               <li>INSTAGRAM</li>
               <li>TWITTER</li>
@@ -181,33 +166,34 @@ const mobileLinkVars = {
 
 const MobileLinks = ({ nav }: { nav: INav }) => {
   const pathname = usePathname();
+  const { t, isRTL } = useLanguage();
 
   return (
-    <motion.ul className="flex items-center gap-[20px] mx-auto min-[1200px]:text-[30px] min-[800px]:text-[27px] min-[500px]:text-[24px] max-[500px]:text-[27px] font-helvetica ">
+    <motion.ul className="flex items-center gap-[20px] mx-auto min-[1200px]:text-[30px] min-[800px]:text-[27px] min-[500px]:text-[24px] max-[500px]:text-[27px]  ">
       <motion.li
         variants={mobileLinkVars}
         initial="initial"
         animate="open"
         exit="exit"
-        className="cursor-pointer group relative inline-block"
+        className="cursor-pointer group relative flex gap-2"
       >
         <Link
           className={`block relative py-2 px-4 transition-colors duration-500 ${
-            pathname === nav.link
+            pathname === nav.href
               ? "text-golden_yellow"
               : "text-off-white hover:text-golden_yellow"
           }`}
-          href={nav.link}
+          href={nav.href}
         >
-          {nav.name}
+          {t(`header.navigation.${nav.key}`)}
           <span className="absolute bottom-[2px] left-0 w-full h-[2px] bg-golden_yellow scale-x-0 origin-bottom-right group-hover:scale-x-100 group-hover:origin-bottom-left transition-transform duration-500 ease-out"></span>
         </Link>
-      </motion.li>
-      {nav.name == "Home" ? (
+        {pathname === nav.href ? (
         <img className="w-[30px]" src="./Star.svg" alt="img" />
       ) : (
         ""
       )}
+      </motion.li>
     </motion.ul>
   );
 };

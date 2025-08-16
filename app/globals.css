@@ -41,6 +41,7 @@
       --radius: 0.5rem;
 
       --font-doran: "Tahoma", sans-serif;
+      --font-miracle: "Tahoma", sans-serif;
     }
 
     .dark {
@@ -84,7 +85,7 @@
 
     body {
       @apply bg-background text-foreground;
-      font-family: "Miracle";
+      font-family: "miracle";
       width: 100vw !important;
       max-width: 100vw;
       min-height: 100vh;
@@ -116,6 +117,14 @@
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+[dir="ltr"] {
+  font-family: var(--font-miracle), system-ui, sans-serif;
+}
+
+[dir="ltr"] .font-sans {
+  font-family: var(--font-miracle), var(--font-sans);
 }
 
 /* Enhanced RTL support styles */

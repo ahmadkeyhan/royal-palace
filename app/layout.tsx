@@ -18,6 +18,20 @@ const doran = localFont({
   display: 'swap'
 })
 
+const miracle = localFont({
+  src: [
+    {
+      path: "../public/fonts/Miracle400.otf",
+      weight: '400',
+      style: 'normal'
+    }
+  ],
+  variable: "--font-miracle",
+  display: 'swap'
+})
+
+
+
 export const metadata: Metadata = {
   title: "BankHotel",
   description: "Developed by Web Wizard",
@@ -36,7 +50,7 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0"
         ></meta>
       </head>
-      <body className={doran.variable}>
+      <body className={`${doran.variable} ${miracle.variable}`}>
         <StoreProvider>
             <LanguageProvider>
               <LayoutWrapper>
