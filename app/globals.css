@@ -39,6 +39,8 @@
       --ring: 222.2 84% 4.9%;
 
       --radius: 0.5rem;
+
+      --font-doran: "Tahoma", sans-serif;
     }
 
     .dark {
@@ -114,6 +116,17 @@
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+/* Enhanced RTL support styles */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  font-family: var(--font-doran), system-ui, sans-serif;
+}
+
+[dir="rtl"] .font-sans {
+  font-family: var(--font-doran), var(--font-sans);
 }
     
     

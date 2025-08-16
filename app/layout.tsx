@@ -1,12 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local"
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import { LanguageProvider } from "@/contexts/LanguageContext"
 import { LayoutWrapper } from "@/components/layout-wrapper"
 
-const inter = Inter({ subsets: ["latin"] });
+const doran = localFont({
+  src: [
+    {
+      path: "../public/fonts/Doran-Medium.otf",
+      weight: '400',
+      style: 'normal'
+    }
+  ],
+  variable: "--font-doran",
+  display: 'swap'
+})
 
 export const metadata: Metadata = {
   title: "BankHotel",
@@ -26,7 +36,7 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0"
         ></meta>
       </head>
-      <body className={inter.className}>
+      <body className={doran.variable}>
         <StoreProvider>
             <LanguageProvider>
               <LayoutWrapper>

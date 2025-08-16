@@ -69,6 +69,7 @@ const config = {
     
        fontFamily: {
          'miracle': ['miracle', 'sans-serif'],
+         'doran': ['doran', 'sans-serif'],
          'helvetica': ['helvetica']
       },
       borderRadius: {
