@@ -26,7 +26,7 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className="bg-[#313F38] max-[1200px]:sticky top-0 left-0 z-30 w-full pb-1 border-[1px] border-transparent text-white">
+    <nav className="bg-[#313F38] fixed top-0 left-0 z-30 w-full pb-1 border-[1px] border-transparent text-white">
       <RTLAwareFlex
         justify="between"
         align="center"
