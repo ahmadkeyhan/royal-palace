@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { wrap } from "@popmotion/popcorn";
 import FadeInText from "@/components/animation/FadeInText";
 import FadeInTextHeader from "@/components/animation/FadeInTextHeader";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ISlider {
   id: number;
@@ -36,40 +37,39 @@ const sliderTransition = {
 };
 
 function Home_Slider(props: any) {
+    const { t, isRTL } = useLanguage();
   const [sliderContent, setSliderContent] = useState<ISlider[]>([
     {
       id: 1,
       img: "./mirror-image.webp",
       img2: "./room-image.webp",
-      title: "Superior Twin",
-      text:
-        "The Superior twin is perfect for those who plan to stay long. The spacious and bright room is equipped with deluxe Italian furniture and has a beautiful view to the historical part of the city. Stylish interior design and comfortable beds will make your stay cozy and pleasant.",
+      title : "اتاق استاندارد",
+      text : "چیدمان و نوع اتاق های هنل رویال پالاس استاندارد می باشد برای تمامی اتاق ها روم سرویس 24 ساعته قرار دارد و ارایه خدمات بصورت شبانه روزی می باشد، در ضمن ورود حیوانات به اتاق ها ممنوع می باشد."
     },
     {
       id: 2,
       img: "./bigger-copenhagen.webp",
       img2: "./common-area.webp",
-      title: "Luxury Rooms",
-      text:
-        "The lesser twin is perfect for those who plan to stay long. The spacious and bright room is equipped with deluxe Italian furniture and has a beautiful view to the historical part of the city. Stylish interior design and comfortable beds will make your stay cozy and pleasant.",
+      title : "سوئیت VIP",
+      text : "چیدمان و نوع سوییت های VIP هنل رویال پالاس بزرگتر از اتاق های استاندارد می باشد برای تمامی سوییت ها، روم سرویس 24 ساعته قرار دارد و ارایه خدمات بصورت شبانه روزی می باشد، در ضمن ورود حیوانات به سوییت ها ممنوع می باشد."
     },
-    {
-      id: 3,
-      img: "./cheng-chung.webp",
-      img2: "./bigger-copenhagen.webp",
+    // {
+    //   id: 3,
+    //   img: "./cheng-chung.webp",
+    //   img2: "./bigger-copenhagen.webp",
 
-      title: "Fancy Rooms",
-      text:
-        "The bigger twin is perfect for those who plan to stay long. The spacious and bright room is equipped with deluxe Italian furniture and has a beautiful view to the historical part of the city. Stylish interior design and comfortable beds will make your stay cozy and pleasant.",
-    },
-    {
-      id: 4,
-      img: "./space-copenhagen.webp",
-      img2: "./small_apart.webp",
-      title: "Luxury Rooms",
-      text:
-        "The Superior twin is perfect for those who plan to stay long. The spacious and bright room is equipped with deluxe Italian furniture and has a beautiful view to the historical part of the city. Stylish interior design and comfortable beds will make your stay cozy and pleasant.",
-    },
+    //   title: "Fancy Rooms",
+    //   text:
+    //     "The bigger twin is perfect for those who plan to stay long. The spacious and bright room is equipped with deluxe Italian furniture and has a beautiful view to the historical part of the city. Stylish interior design and comfortable beds will make your stay cozy and pleasant.",
+    // },
+    // {
+    //   id: 4,
+    //   img: "./space-copenhagen.webp",
+    //   img2: "./small_apart.webp",
+    //   title: "Luxury Rooms",
+    //   text:
+    //     "The Superior twin is perfect for those who plan to stay long. The spacious and bright room is equipped with deluxe Italian furniture and has a beautiful view to the historical part of the city. Stylish interior design and comfortable beds will make your stay cozy and pleasant.",
+    // },
   ]);
 
   const [[imageCount, direction], setImageCount] = useState<[number, number]>([
@@ -147,24 +147,20 @@ function Home_Slider(props: any) {
           >
             <FadeInTextHeader
               inView={inView}
-              style="text-start leading-[65px] flex flex-col gap-[10px] text-text_royal_green font-miracle scroll-m-10 text-[40px] font-medium tracking-[.10em] lg:text-[80px] xl:text-[80px]  max-xl:text-[50px]  max-[500px]:text-[30px]  max-[500px]:leading-[35px] max-[760px]:text-center max-[760px]:w-full "
+              style="text-start leading-[65px] flex flex-col gap-[10px] text-text_royal_green scroll-m-10 text-[40px] font-medium tracking-[.10em] lg:text-[80px] xl:text-[80px]  max-xl:text-[50px]  max-[500px]:text-[30px]  max-[500px]:leading-[35px] max-[760px]:text-center max-[760px]:w-full "
             >
               <span className="max-[760px]:w-[50%] max-[760px]:text-end ">
                 {" "}
-                ROOMS{" "}
+                {t("rooms.title1")}{" "}
               </span>{" "}
-              <span className="max-[760px]:text-end"> & APARTMENTS </span>
+              <span className="max-[760px]:text-end">{t("rooms.title2")} </span>
             </FadeInTextHeader>
             <FadeInText
               inView={inView}
-              style="w-[280px]  max-[760px]:w-[95%] font-helvetica text-text_royal_green text-#000 leading-7"
+              style={`w-[280px]  max-[760px]:w-[95%] font-${isRTL? "" : "helvetica"} text-text_royal_green text-#000 leading-7`}
             >
-              ALL ROOM DECORATION WAS MADE WITH ECOLOGICAL CERTIFIED AND SAFE
-              MATERIALS.
+              {t("rooms.description")}
             </FadeInText>
-            {/* <p className="w-[280px]  max-[760px]:w-[95%] font-helvetica text-text_royal_green text-#000 leading-7 ">
-              ALL ROOM DECORATION WAS MADE WITH ECOLOGICAL CERTIFIED AND SAFE
-            </p> */}
           </div>
           <div className="w-[95%] mx-auto mt-[30px]  lg:h-[100vh] max-lg:h-[100vh]  max-[600px]:h-[110vh]  ">
             <div className="relative   flex items-end gap-[20px] h-full  justify-between  max-[800px]:flex-col-reverse">
@@ -264,7 +260,7 @@ function Home_Slider(props: any) {
                         <h1 className="text-start max-[750px]:flex text-text_royal_green scroll-m-20 text-2xl font-semibold tracking-tight">
                           {sliderContent[index].title}
                         </h1>
-                        <p className="leading-7 text-text_royal_green font-helvetica  [&:not(:first-child)]:mt-2">
+                        <p className="leading-7 text-text_royal_green  [&:not(:first-child)]:mt-2">
                           {sliderContent[index].text}
                         </p>
                         <div className="">
