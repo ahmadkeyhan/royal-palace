@@ -1,5 +1,6 @@
 {
   "common": {
+    "royal_palace": "ROYAL PALACE",
     "home": "Home",
     "about": "About",
     "rooms": "Rooms",
@@ -22,21 +23,26 @@
       "about": "About Us",
       "rooms": "Rooms & Suites",
       "facilities": "Facilities",
-      "gallery": "Gallery",
+      "book a room": "Book a room",
       "contact": "Contact"
     }
   },
   "banner": {
-    "title": "Welcome to Bank Hotel",
-    "subtitle": "Experience Luxury Like Never Before",
-    "description": "Discover unparalleled comfort and elegance in the heart of the city. Our premium accommodations offer world-class amenities and exceptional service.",
+    "title": "ROYAL PALACE",
+    "subtitle": "Welcome to the Royal Palace Tabriz Luxury Hotel",
+    "description": "Make a reservation for a suite.",
     "cta_primary": "Book Your Stay",
-    "cta_secondary": "Explore Rooms"
+    "cta_secondary": "Explore Rooms",
+    "check_in": "CHECK IN",
+    "check_out": "CHECK OUT",
+    "book": "BOOK ROOM"
   },
   "about": {
-    "title": "About Bank Hotel",
-    "subtitle": "A Legacy of Excellence",
-    "description": "For over a century, Bank Hotel has been synonymous with luxury, comfort, and impeccable service. Located in a beautifully restored historic building, we combine timeless elegance with modern amenities.",
+    "title1": "ABOUT",
+    "title2": "US",
+    "subtitle": "A Royal Experience!",
+    "description": "Royal Palace Hotel Tabriz is a four-star luxury hotel that opened in Tabriz in 1401. This hotel is built on 7 floors and has 46 rooms. Royal Palace Hotel Tabriz is located in a convenient location and has easy access to the commercial, recreational and historical centers of Tabriz.",
+    "cta" : "SEE MORE",
     "features": {
       "heritage": "Historic Heritage",
       "service": "Premium Service",
@@ -45,14 +51,19 @@
     }
   },
   "rooms": {
-    "title": "Rooms & Suites",
+    "title1": "Rooms",
+    "title2": "& Suites",
     "subtitle": "Luxury Accommodations",
     "description": "Choose from our carefully designed rooms and suites, each offering unique comfort and style.",
     "types": {
-      "standard": "Standard Room",
-      "deluxe": "Deluxe Room",
-      "suite": "Executive Suite",
-      "presidential": "Presidential Suite"
+      "standard": {
+        "title" : "Standard Room",
+        "description" : "The layout and type of rooms at Henle Royal Palace are standard. All rooms have 24-hour room service and services are provided around the clock. Animals are not allowed in the rooms."
+      },
+      "suit": {
+        "title" : "VIP Suit",
+        "description" : "The size and type of VIP suites at Henle Royal Palace are larger than standard rooms. All suites have 24-hour room service and services are provided around the clock. Animals are not allowed in the suites."
+      }
     },
     "amenities": {
       "wifi": "Free WiFi",
