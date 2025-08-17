@@ -9,6 +9,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { MobileLanguageSwitcher } from "@/components/mobile-language-switcher";
 import { RTLAwareFlex } from "@/components/rtl-aware-flex";
+import Image from "next/image";
 
 const Navbar = () => {
   const { t, isRTL } = useLanguage();
@@ -26,15 +27,20 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className="bg-[#313F38] fixed top-0 left-0 z-30 w-full pb-1 border-[1px] border-transparent text-white">
+    <nav className="bg-regal_green fixed top-0 left-0 z-30 w-full pb-1 border-[1px] border-transparent text-white">
       <RTLAwareFlex
         justify="between"
         align="center"
         className="m-[auto] py-1 w-[95%]"
       >
-        <h1 className={`scroll-m-20 text-3xl tracking-tight first:mt-2`}>
-          {t('common.royal_palace')}
-        </h1>
+        <div className="flex items-center gap-2">
+          <div className="relative h-12 w-16">
+            <Image src="/logo.png" alt="لوگوی هتل" fill className=" object-cover" />
+          </div>
+          <h1 className={`scroll-m-20 text-xl font-light tracking-tight first:mt-2`}>
+            {t('common.royal_palace')}
+          </h1>
+        </div>
         <ul className="flex items-center justify-around gap-[15px] min-[1220px]-w-[50%] max-[1220px]-w-[62%] my-6 ml-6 list-none [&>li]:mt-2 min-[1200px]:flex min-[100px]:hidden">
           {/* <li className="cursor-pointer hover:text-golden_yellow transition-all">
             <Link href="/"> HOME</Link>
