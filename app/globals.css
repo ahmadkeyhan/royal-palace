@@ -8,6 +8,70 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Doran";
+  src: url("/fonts/doran/Doran-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Doran";
+  src: url("/fonts/doran/Doran-Regular.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Doran";
+  src: url("/fonts/doran/Doran-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Doran";
+  src: url("/fonts/doran/Doran-Medium.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Doran";
+  src: url("/fonts/doran/Doran-Bold.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Doran";
+  src: url("/fonts/doran/Doran-ExtraBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Doran";
+  src: url("/fonts/doran/Doran-Black.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Doran";
+  src: url("/fonts/doran/Doran-ExtraBlack.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

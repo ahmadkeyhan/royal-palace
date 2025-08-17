@@ -9,10 +9,45 @@ import { LayoutWrapper } from "@/components/layout-wrapper"
 const doran = localFont({
   src: [
     {
-      path: "../public/fonts/Doran-Medium.otf",
+      path: "../public/fonts/doran/Doran-Thin.otf",
+      weight: '100',
+      style: 'normal'
+    },
+    {
+      path: "../public/fonts/doran/Doran-Regular.otf",
+      weight: '200',
+      style: 'normal'
+    },
+    {
+      path: "../public/fonts/doran/Doran-Light.otf",
+      weight: '300',
+      style: 'normal'
+    },
+    {
+      path: "../public/fonts/doran/Doran-Medium.otf",
       weight: '400',
       style: 'normal'
-    }
+    },
+    {
+      path: "../public/fonts/doran/Doran-Bold.otf",
+      weight: '500',
+      style: 'normal'
+    },
+    {
+      path: "../public/fonts/doran/Doran-ExtraBold.otf",
+      weight: '600',
+      style: 'normal'
+    },
+    {
+      path: "../public/fonts/doran/Doran-Black.otf",
+      weight: '700',
+      style: 'normal'
+    },
+    {
+      path: "../public/fonts/doran/Doran-ExtraBlack.otf",
+      weight: '800',
+      style: 'normal'
+    },
   ],
   variable: "--font-doran",
   display: 'swap'

@@ -23,7 +23,7 @@ const config = {
 'hero-header': "url('/room-image.webp')"
       },
       colors: {
-        "regal_green": "#313F38",
+        "regal_green": "#181a19",
         "hero-btn": "rgba(49, 63, 56, 0.48)",
         "hover-hero-btn": "rgba(33, 36, 35, 0.755)",
         "white_text": "#fff",
