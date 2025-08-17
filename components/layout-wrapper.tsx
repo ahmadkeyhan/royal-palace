@@ -17,7 +17,7 @@ export function LayoutWrapper({ children, className = "" }: LayoutWrapperProps) 
     <div
       dir={isRTL ? "rtl" : "ltr"}
       lang={locale}
-      className={`min-h-screen transition-all duration-300 ${isRTL ? "font-persian" : "font-sans"} ${className}`}
+      className={`min-h-screen pt-[72px] min-[1200px]:pt-[102px] transition-all duration-300 ${isRTL ? "font-persian" : "font-sans"} ${className}`}
     >
       {children}
     </div>
