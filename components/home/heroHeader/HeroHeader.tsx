@@ -162,13 +162,13 @@ const HeroHeader = () => {
               );
             })}
           </div>
-          <p className={`font-${isRTL? "" : "helvetica"} px-12 text-center -mt-2`}>
+          <p className={` px-12 text-center -mt-2`}>
             {t('banner.subtitle')}
           </p>
-          <p className={`font-${isRTL? "" : "helvetica"} font-light tracking-[.05em] xl:w-[50%] max-md:w-[100%] max-[800px]:w-[100%] max-[760px]:text-center max-[900px]:ml-[5px]`}>
+          <p className={`font-ravi font-light tracking-[.05em] xl:w-[50%] max-md:w-[100%] max-[800px]:w-[100%] max-[760px]:text-center max-[900px]:ml-[5px]`}>
             {t('banner.description')}
           </p>
-          <div className="flex justify-center items-center gap-6 mb-8">
+          <div className="flex justify-center font-ravi items-center gap-6 mb-8">
             <Link href="/booking">
               <Button variant="default">
                 {t("banner.cta_primary")}
