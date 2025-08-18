@@ -271,10 +271,9 @@ function Home_Slider(props: any) {
                         </p>
                         <div className="">
                           <p className="max-[750px]:hidden flex">
-                            <span>
-                              0{sliderContent[index].id} / 0
-                              {sliderContent.length}
-                            </span>
+                            <span>{isRTL? formatCurrency(0) : "0"}{isRTL? formatCurrency(sliderContent[index].id) : sliderContent[index].id}</span>
+                            <span>/</span>
+                            <span>{isRTL? formatCurrency(0) : "0"}{isRTL? formatCurrency(sliderContent.length) : sliderContent.length}</span>
                           </p>
                         </div>
                       </motion.div>
