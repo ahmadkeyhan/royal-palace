@@ -59,11 +59,11 @@
     "types": {
       "standard": {
         "title" : "Standard Room",
-        "description" : "The layout and type of rooms at Henle Royal Palace are standard. All rooms have 24-hour room service and services are provided around the clock. Animals are not allowed in the rooms."
+        "description" : "The layout and type of rooms at Royal Palace are standard. All rooms have 24-hour room service and services are provided around the clock. Pets are not allowed in the rooms."
       },
       "suit": {
         "title" : "VIP Suit",
-        "description" : "The size and type of VIP suites at Henle Royal Palace are larger than standard rooms. All suites have 24-hour room service and services are provided around the clock. Animals are not allowed in the suites."
+        "description" : "The size and type of VIP suites at Royal Palace are larger than standard rooms. All suites have 24-hour room service and services are provided around the clock. Pets are not allowed in the suites."
       }
     },
     "amenities": {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TbNorthStar } from "react-icons/tb";
 import { AnimatePresence, PanInfo, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -43,34 +43,39 @@ function Home_Slider(props: any) {
       id: 1,
       img: "./mirror-image.webp",
       img2: "./room-image.webp",
-      title : "اتاق استاندارد",
-      text : "چیدمان و نوع اتاق های هنل رویال پالاس استاندارد می باشد برای تمامی اتاق ها روم سرویس 24 ساعته قرار دارد و ارایه خدمات بصورت شبانه روزی می باشد، در ضمن ورود حیوانات به اتاق ها ممنوع می باشد."
+      title: t("rooms.types.standard.title"),
+      text:
+        t("rooms.types.standard.description"),
     },
     {
       id: 2,
       img: "./bigger-copenhagen.webp",
       img2: "./common-area.webp",
-      title : "سوئیت VIP",
-      text : "چیدمان و نوع سوییت های VIP هنل رویال پالاس بزرگتر از اتاق های استاندارد می باشد برای تمامی سوییت ها، روم سرویس 24 ساعته قرار دارد و ارایه خدمات بصورت شبانه روزی می باشد، در ضمن ورود حیوانات به سوییت ها ممنوع می باشد."
-    },
-    // {
-    //   id: 3,
-    //   img: "./cheng-chung.webp",
-    //   img2: "./bigger-copenhagen.webp",
-
-    //   title: "Fancy Rooms",
-    //   text:
-    //     "The bigger twin is perfect for those who plan to stay long. The spacious and bright room is equipped with deluxe Italian furniture and has a beautiful view to the historical part of the city. Stylish interior design and comfortable beds will make your stay cozy and pleasant.",
-    // },
-    // {
-    //   id: 4,
-    //   img: "./space-copenhagen.webp",
-    //   img2: "./small_apart.webp",
-    //   title: "Luxury Rooms",
-    //   text:
-    //     "The Superior twin is perfect for those who plan to stay long. The spacious and bright room is equipped with deluxe Italian furniture and has a beautiful view to the historical part of the city. Stylish interior design and comfortable beds will make your stay cozy and pleasant.",
-    // },
+      title: t("rooms.types.suit.title"),
+      text:
+        t("rooms.types.suit.description"),
+    }
   ]);
+
+  useEffect(() => {
+    console.log('locale changed')
+    setSliderContent([{
+      id: 1,
+      img: "./mirror-image.webp",
+      img2: "./room-image.webp",
+      title: t("rooms.types.standard.title"),
+      text:
+        t("rooms.types.standard.description"),
+    },
+    {
+      id: 2,
+      img: "./bigger-copenhagen.webp",
+      img2: "./common-area.webp",
+      title: t("rooms.types.suit.title"),
+      text:
+        t("rooms.types.suit.description"),
+    }])
+  }, [isRTL])
 
   const [[imageCount, direction], setImageCount] = useState<[number, number]>([
     0,
@@ -157,7 +162,7 @@ function Home_Slider(props: any) {
             </FadeInTextHeader>
             <FadeInText
               inView={inView}
-              style={`w-[280px]  max-[760px]:w-[95%] font-${isRTL? "" : "helvetica"} text-text_royal_green text-#000 leading-7`}
+              style={`w-[280px]  max-[760px]:w-[95%] font-ravi text-text_royal_green text-#000 leading-7`}
             >
               {t("rooms.description")}
             </FadeInText>
@@ -260,7 +265,7 @@ function Home_Slider(props: any) {
                         <h1 className="text-start max-[750px]:flex text-text_royal_green scroll-m-20 text-2xl font-semibold tracking-tight">
                           {sliderContent[index].title}
                         </h1>
-                        <p className="leading-7 text-text_royal_green  [&:not(:first-child)]:mt-2">
+                        <p className="leading-7 text-text_royal_green font-ravi  [&:not(:first-child)]:mt-2">
                           {sliderContent[index].text}
                         </p>
                         <div className="">
