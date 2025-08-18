@@ -21,7 +21,7 @@ export function MobileLanguageSwitcher({ className = "" }: MobileLanguageSwitche
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       size="sm"
       onClick={handleToggle}
       className={`h-10 px-3 gap-2 bg-regal_green text-sm font-medium hover:bg-golden_yellow hover:text-accent-foreground ${className}`}
