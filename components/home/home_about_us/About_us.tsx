@@ -41,11 +41,11 @@ const About_us = (props: Props) => {
                     inView ? "items-end" : "items-end"
                   } max-[750px]:flex-col max-[650px]:items-center`}
                 >
-                  <div className=" w-[500px] min-w-[500px] max-[1300px]:w-[400px] max-[1300px]:min-w-[400px] max-[450px]:min-w-full object-contain mt-[40px] h-[100vh]  relative z-[1] max-[750px]:h-[70vh] max-[750px]:w-[100%]">
+                  <div className=" w-[500px] min-w-[500px] max-[1300px]:w-[400px] max-[1300px]:min-w-[400px] max-[450px]:min-w-full object-contain mt-[40px] relative z-[1] max-[750px]:w-[100%]">
                     {inView && (
                       // <ImageReveal>
                       <motion.img
-                        className="w-full h-full object-fill"
+                        className="w-full object-fill"
                         initial={{
                           clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
                           opacity: 0,
