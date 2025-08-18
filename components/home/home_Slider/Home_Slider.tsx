@@ -146,7 +146,7 @@ function Home_Slider(props: any) {
   return (
     <AnimatePresence>
       <div className="bg-off-white h-full relative border-[1px] border-transparent border-solid">
-        <div className="h-full lg:my-[100px] max-md:my-[50px] ">
+        <div className="h-full lg:mt-[100px] max-md:mt-[50px] ">
           <div
             ref={ref}
             className="flex justify-between items-start gap-[20px]  mx-auto mt-[50px] w-[95%] max-[760px]:flex-wrap max-[650px]:justify-center"
@@ -216,36 +216,16 @@ function Home_Slider(props: any) {
                     alt="img"
                   />
                 </div>
-                <div
-                  ref={ref3}
-                  onClick={() => swipeToImage(1)}
-                  className={`hidden max-[800px]:flex xl:w-[80px] max-xl:w-[60px] cursor-pointer ${isRTL? "rotate-180" : ""}`}
-                >
-                  <motion.img
-                    initial={{
-                      rotate: -180,
-                    }}
-                    animate={{
-                      rotate: inView3 ? 0 : -180,
-                      transition: {
-                        type: "spring",
-                      },
-                    }}
-                    className="w-full"
-                    src="./btn-wavy-black.webp"
-                    alt="img"
-                  />
-                </div>
               </div>
-              <div className=" flex flex-col justify-between items-start gap-[30px] min-[800px]:h-[75%] max-[800px]:h-[70%]  max-[800px]:w-[100%] w-[30%] max-lg:justify-center  max-[750px]:w-full">
+              <div className=" flex flex-col justify-between items-start gap-[30px]  max-[800px]:w-[100%] w-[30%] max-lg:justify-center  max-[750px]:w-full">
                 <div className="flex items-center  gap-[20px] py-2 px-[35px] rounded-[20px] w-fit max-lg:hidden border-solid border-2 border-gray-400">
                   <p className="text-[#FCD043] text-[25px] ">
                     {<TbNorthStar />}{" "}
                   </p>
                   <p>1973 </p>
                 </div>
-                <section className="flex flex-col h-full w-full  items-start overflow-hidden  justify-end gap-[25px] max-[750px]:flex  max-[750px]:flex-column-reverse max-[750px]:items-center">
-                  <div className="w-full min-h-[300px]  max-[800px]:min-h-full max-[1200px]:min-h-[400px] overflow-hidden relative  max-[750px]:flex max-[750px]:flex-row-reverse  justify-between items-center">
+                <section className="flex flex-col w-full  items-start overflow-hidden  justify-end gap-[25px] max-[750px]:flex  max-[750px]:flex-column-reverse max-[750px]:items-center">
+                  <div className="w-full max-[1200px]:min-h-[300px] overflow-hidden relative  max-[750px]:flex max-[750px]:flex-row-reverse  justify-between items-center">
                     <AnimatePresence initial={false} custom={direction}>
                       <motion.div
                         key={imageCount}
@@ -261,21 +241,43 @@ function Home_Slider(props: any) {
                         onDragEnd={dragEndHandler}
                         onTouchStart={handleTouchStart}
                         onTouchEnd={handleTouchEnd}
-                        className="absolute flex flex-col gap-[20px] w-full h-full"
+                        className="absolute flex flex-col gap-[20px] w-full"
                       >
-                        <h1 className="text-start max-[750px]:flex text-text_royal_green scroll-m-20 text-2xl font-semibold tracking-tight">
-                          {sliderContent[index].title}
-                        </h1>
+                        <div className="w-full flex justify-between">
+                          <h1 className="text-start max-[750px]:flex text-text_royal_green scroll-m-20 text-2xl font-semibold tracking-tight">
+                            {sliderContent[index].title}
+                          </h1>
+                          <div
+                            ref={ref3}
+                            onClick={() => swipeToImage(1)}
+                            className={`hidden max-[800px]:flex xl:w-[80px] max-xl:w-[60px] cursor-pointer ${isRTL? "rotate-180" : ""}`}
+                          >
+                            <motion.img
+                              initial={{
+                                rotate: -180,
+                              }}
+                              animate={{
+                                rotate: inView3 ? 0 : -180,
+                                transition: {
+                                  type: "spring",
+                                },
+                              }}
+                              className="w-full"
+                              src="./btn-wavy-black.webp"
+                              alt="img"
+                            />
+                          </div>
+                        </div>
                         <p className="leading-7 text-text_royal_green font-ravi  [&:not(:first-child)]:mt-2">
                           {sliderContent[index].text}
                         </p>
-                        <div className="">
+                        {/* <div className="">
                           <p className="max-[750px]:hidden flex">
                             <span>{isRTL? formatCurrency(0) : "0"}{isRTL? formatCurrency(sliderContent[index].id) : sliderContent[index].id}</span>
                             <span>/</span>
                             <span>{isRTL? formatCurrency(0) : "0"}{isRTL? formatCurrency(sliderContent.length) : sliderContent.length}</span>
                           </p>
-                        </div>
+                        </div> */}
                       </motion.div>
                     </AnimatePresence>
                   </div>
