@@ -2,8 +2,6 @@ import React from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { useInView } from "react-intersection-observer";
 import { Variant } from "framer-motion";
-import Link from "next/link";
-import { useLanguage } from "@/contexts/LanguageContext";
 type Props = {};
 
 type Variants = {
@@ -14,20 +12,19 @@ function HeroImage({}: Props) {
   const { ref, inView, entry } = useInView({
     threshold: 0.3,
   });
-  const { t, isRTL } = useLanguage();
 
   return (
     <div className="bg-regal_green">
       <div className="w-[95%] relative mx-auto">
-        <div className="relative w-full overflow-hidden h-full ">
+        <div className="relative w-full overflow-hidden h-full flex justify-center">
           <img
             className={
-              inView ? `transform transition duration-1000 scale-105` : ""
+             `max-w-7xl ${inView ? `transform transition duration-1000 scale-105` : ""}`
             }
             src="./heroImage.webp"
             alt="img"
           />
-          <div className="flex items-center absolute max-[900px]:bottom-0 min-[900px]:top-0 right-0 ">
+          {/* <div className="flex items-center absolute max-[900px]:bottom-0 min-[900px]:top-0 right-0 ">
             <Link href="/booking">
               <button className="sm:flex items-center justify-around gap-[10px] hidden sm:w-[180px] lg:w-[200px] sm:h-[70px] max-lg:h-[80px] xl:h-[90px] text-white_text  bg-hero-btn hover:bg-hover-hero-btn transition ease delay-450 backdrop-blur-[20px] opacity-[0.9]">
                 {t("banner.check_in")}
@@ -47,24 +44,8 @@ function HeroImage({}: Props) {
                 {t("banner.book")}
               </button>
             </Link>
-          </div>
+          </div> */}
         </div>
-
-        {/* <div
-          ref={ref}
-          className="flex items-center justify-between gap-3 mt-[20px] text-white_text  "
-        >
-          <p className="leading-7 text-golden_yellow underline underline-offset-1">
-            +234 781 52 952
-          </p>
-          <p className="leading-7 ">ART & CONGRESS </p>
-        </div> */}
-        {/* <div className="flex items-center justify-between gap-3 min-[450px]:text-[17px] max-[450px]:text-[15px] text-white_text  ">
-          <p className="leading-7 underline underline-offset-1 ">
-            6A - ANTHONY HOROWITZ WAY, LEKKI{" "}
-          </p>
-          <p className="leading-7">HALL</p>
-        </div> */}
       </div>
     </div>
   );
