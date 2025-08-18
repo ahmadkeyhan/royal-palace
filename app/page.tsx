@@ -27,7 +27,7 @@ export default function Home() {
         <Guide />
         <About_us />
         <Home_Slider />
-        <Facilities />
+        {/* <Facilities /> */}
         {/* <Faq /> */}
         {/* <BestApartments /> */}
         {/* <Gallery /> */}
