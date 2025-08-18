@@ -37,6 +37,26 @@
     "check_out": "CHECK OUT",
     "book": "BOOK ROOM"
   },
+  "guide" : {
+    "title1": "GUEST",
+    "title2": "GUIDE",
+    "description1": {
+      "1":"Reception: 101-104",
+      "2":"Cafe: 102",
+      "3":"Restaurant: 333",
+      "4":"Laundry: 444",
+      "5":"House keeping: 300",
+      "6":"Sentry: 555"
+    },
+    "description2": {
+      "1":"Restaurant is on the 1st floor.",
+      "2":"Breakfast 7:00 - 10:00",
+      "3":"Lunch 13:30 - 15:00",
+      "4":"Evening 16:00 - 19:00",
+      "5":"Dinner 20:00 - 22:00"
+    },
+    "description3": []
+  },
   "about": {
     "title1": "ABOUT",
     "title2": "US",
