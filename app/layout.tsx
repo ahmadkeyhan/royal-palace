@@ -65,6 +65,18 @@ const miracle = localFont({
   display: 'swap'
 })
 
+const ravi = localFont({
+  src: [
+    {
+      path: "../public/fonts/ravi/Ravi-Regular.otf",
+      weight: '200',
+      style: 'normal'
+    }
+  ],
+  variable: "--font-ravi",
+  display: 'swap'
+})
+
 
 
 export const metadata: Metadata = {
@@ -85,7 +97,7 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0"
         ></meta>
       </head>
-      <body className={`${doran.variable} ${miracle.variable}`}>
+      <body className={`${doran.variable} ${miracle.variable} ${ravi.variable}`}>
         <StoreProvider>
             <LanguageProvider>
               <LayoutWrapper>

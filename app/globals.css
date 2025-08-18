@@ -72,6 +72,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Ravi";
+  src: url("/fonts/ravi/Ravi-Regular.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -106,6 +114,7 @@
 
     --font-doran: "Doran", sans-serif;
     --font-miracle: "Miracle", sans-serif;
+    --font-ravi: "Ravi", sans-serif;
   }
 
   .dark {

@@ -70,7 +70,8 @@ const config = {
        fontFamily: {
          'miracle': ['miracle', 'sans-serif'],
          'doran': ['doran', 'sans-serif'],
-         'helvetica': ['helvetica']
+         'helvetica': ['helvetica'],
+         'ravi' : ['ravi', 'sans-serif']
       },
       borderRadius: {
         lg: "var(--radius)",
