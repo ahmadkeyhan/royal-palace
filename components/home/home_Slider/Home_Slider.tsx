@@ -6,6 +6,7 @@ import { wrap } from "@popmotion/popcorn";
 import FadeInText from "@/components/animation/FadeInText";
 import FadeInTextHeader from "@/components/animation/FadeInTextHeader";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { formatCurrency } from "@/lib/utils";
 
 interface ISlider {
   id: number;
@@ -197,7 +198,7 @@ function Home_Slider(props: any) {
                 <div
                   ref={ref2}
                   onClick={() => swipeToImage(1)}
-                  className="max-[800px]:hidden flex absolute bottom-0 left-0 xl:w-[80px] md:w-[60px] w-[40px] cursor-pointer "
+                  className={`max-[800px]:hidden flex absolute bottom-0 left-0 xl:w-[80px] md:w-[60px] w-[40px] cursor-pointer ${isRTL? "rotate-180" : ""}`}
                 >
                   <motion.img
                     initial={{
@@ -218,7 +219,7 @@ function Home_Slider(props: any) {
                 <div
                   ref={ref3}
                   onClick={() => swipeToImage(1)}
-                  className=" hidden max-[800px]:flex xl:w-[80px] max-xl:w-[60px] cursor-pointer "
+                  className={`hidden max-[800px]:flex xl:w-[80px] max-xl:w-[60px] cursor-pointer ${isRTL? "rotate-180" : ""}`}
                 >
                   <motion.img
                     initial={{
@@ -283,9 +284,9 @@ function Home_Slider(props: any) {
               </div>
 
               <p className="hidden max-[750px]:flex items-center gap-[20px]">
-                <span>0{sliderContent[index].id}</span>
+                <span>{isRTL? formatCurrency(0) : "0"}{isRTL? formatCurrency(sliderContent[index].id) : sliderContent[index].id}</span>
                 <span>/</span>
-                <span>0{sliderContent.length}</span>
+                <span>{isRTL? formatCurrency(0) : "0"}{isRTL? formatCurrency(sliderContent.length) : sliderContent.length}</span>
               </p>
               <div className="relative min-[800px]:w-[500px] h-full max-lg:h-[100%]  max-[800px]:w-full max-[800px]:h-full  ">
                 <div className="absolute right-0 w-full h-full     max-[750px]:max-w-[100%]  max-[750px]:min-w-[100%] ">
