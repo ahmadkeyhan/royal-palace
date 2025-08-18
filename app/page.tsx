@@ -26,7 +26,7 @@ export default function Home() {
         </div>
         <Guide />
         <About_us />
-        <Home_Slider />
+        {/* <Home_Slider /> */}
         {/* <Facilities /> */}
         {/* <Faq /> */}
         {/* <BestApartments /> */}
