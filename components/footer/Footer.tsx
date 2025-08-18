@@ -2,6 +2,8 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Laptop } from "lucide-react";
+import Link from "next/link";
 
 type Props = {};
 
@@ -15,7 +17,7 @@ const Footer: React.FC = (props: Props) => {
         route == "/facility" ? "text-white" : "#000"
       }  border-[1px] border-transparent font-ravi text-sm`}
     >
-      <div className="min-[680px]:w-[95%] w-[95%] mx-auto mt-[50px] pb-[50px] flex items-start justify-start gap-[50px] flex-wrap ">
+      <div className="min-[680px]:w-[95%] w-[95%] mx-auto pb-4 flex items-start justify-start gap-[50px] flex-wrap ">
         {/* <div className="flex flex-col items-start gap-[10px] max-[480px]:hidden">
           <p className="text-xl">ABOUT US</p>
           <p className="leading-6 font-helvetica w-[280px]">
@@ -60,6 +62,10 @@ const Footer: React.FC = (props: Props) => {
         </div> */}
         <div className="w-full">
           <div className="h-[1px] w-full bg-gray-200 hidden "> </div>
+          <div className="flex sm:col-span-2 justify-center items-center gap-2 text-sm py-2 text-gray-400">
+            <Laptop className="w-4 h-4" />
+            <p>{t("footer.developed")}<Link href="https://www.instagram.com/key.hansa" target="_blank" rel="noopener noreferrer"><span className="border-b-2 border-golden_yellow font-bold">{t("footer.by")}</span></Link></p>
+          </div>
           <p className="opacity-[0.4]  text-center mt-6">
             {t("footer.copyright")}
           </p>

@@ -113,6 +113,8 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 All rights reserved for Royal Palace."
+    "copyright": "© 2025 All rights reserved for Royal Palace.",
+    "developed": "Designed and developed by ",
+    "by": "keyhansa"
   }
 }
