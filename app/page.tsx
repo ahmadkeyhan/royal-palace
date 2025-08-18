@@ -23,11 +23,11 @@ export default function Home() {
         <HeroImage />
         <About_us />
         <Home_Slider />
-        <Facilities />
-        <Faq />
-        <BestApartments />
-        <Gallery />
-        <GetInTouch />
+        {/* <Facilities /> */}
+        {/* <Faq /> */}
+        {/* <BestApartments /> */}
+        {/* <Gallery /> */}
+        {/* <GetInTouch /> */}
         <Footer />
       </FadeIn>
     </SmoothScroll>
