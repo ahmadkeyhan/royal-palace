@@ -142,45 +142,42 @@ const HeroHeader = () => {
   }
 
   return (
-    <div className="w-full bg-regal_green pt-12">
-      <div className="flex justify-between items-center gap-[30px] w-[95%] m-auto text-white max-[900px]:items-center max-[760px]:flex-col">
-        <div className="flex flex-col gap-4 w-full">
-          <div className="flex items-start h-20 sm:h-32 pt-4 max-[760px]:justify-center gap-1 overflow-hidden">
-            {t('banner.title').split(' ').map((bank: string, index) => {
-              return (
-                <h1
-                  className={
-                    `${bank}` == "PALACE" || `${bank}` == "پالاس" 
-                      ? " flex items-center scroll-m-20 text-golden_yellow -tracking-tight  border-solid lg:text-8xl sm:text-7xl max-[330px]:text-[50px] max-[760px]:justify-center text-5xl"
-                      : " flex items-center scroll-m-20 text-white -tracking-tight  border-solid lg:text-8xl sm:text-7xl max-[330px]:text-[50px] max-[760px]:justify-center text-5xl"
-                  }
-                  key={index}
-                >
-                  {" "}
-                  {getCharsAdvanced(bank)}{" "}
-                </h1>
-              );
-            })}
-          </div>
+    <div className="w-full bg-regal_green pt-8">
+      <div className="flex justify-around gap-4 w-full m-auto text-white max-[900px]:items-center max-[760px]:flex-col">
+        <div className="flex h-20 sm:h-32 pt-4 justify-center gap-1 overflow-hidden">
+          {t('banner.title').split(' ').map((bank: string, index) => {
+            return (
+              <h1
+                className={
+                  `${bank}` == "PALACE" || `${bank}` == "پالاس" 
+                    ? " flex items-center scroll-m-20 text-golden_yellow -tracking-tight  border-solid lg:text-8xl sm:text-7xl max-[330px]:text-[50px] max-[760px]:justify-center text-5xl"
+                    : " flex items-center scroll-m-20 text-white -tracking-tight  border-solid lg:text-8xl sm:text-7xl max-[330px]:text-[50px] max-[760px]:justify-center text-5xl"
+                }
+                key={index}
+              >
+                {" "}
+                {getCharsAdvanced(bank)}{" "}
+              </h1>
+            );
+          })}
+        </div>
+        <div className="flex flex-col gap-4">
           <div className="flex justify-center text-center">
             <p className="px-12 -mt-2 w-[28ch] leading-loose">
               {t('banner.subtitle')}
             </p>
           </div>
-          {/* <p className={`font-ravi font-light tracking-[.05em] xl:w-[50%] max-md:w-[100%] max-[800px]:w-[100%] max-[760px]:text-center max-[900px]:ml-[5px]`}>
-            {t('banner.description')}
-          </p> */}
           <div className="flex justify-center font-ravi items-center gap-6 mb-8">
             <Link href="/menu">
               <Button variant="default">
                 {t("banner.cta_primary")}
               </Button>
             </Link>
-            <Link href="#help">
+            <AnchorLink href="#guide">
               <Button variant="outline">
                 {t("banner.cta_secondary")}
               </Button>
-            </Link>
+            </AnchorLink>
           </div>
         </div>
         {/* <div className="flex gap-[0px] w-full justify-between min-[900px]:flex-col min-[900px]:gap-2">
