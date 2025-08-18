@@ -13,9 +13,8 @@ const Guide = (props: Props) => {
   const [ref, inView] = useInView();
 
   return (
-    <div className="bg-off-white w-full overflow-hidden  h-full border-[1px] border-transparent  border-solid ">
+    <div id="guide" className="bg-off-white w-full overflow-hidden  h-full border-[1px] border-transparent  border-solid ">
       <div
-        id="guide"
         className="w-[95%] my-[70px] mx-auto  border-solid  "
       >
         <div className="relative h-[100%] flex flex-col justify-center items-center  ">
