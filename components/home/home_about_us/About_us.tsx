@@ -73,16 +73,22 @@ const About_us = (props: Props) => {
                       inview={inView2}
                       customStyles={`w-[100%]  md:w-[80%] max-sm:w-[100%]  max-xl:w-[90%] leading-7 [&:not(:first-child)]: mt-3 lg:text-[17px] sm:text-[16px] max-sm:text-[14px] font-ravi font-light`}
                     >
-                      {t("about.description")}
+                      {t("about.description1")}
+                    </MaskText>
+                    <MaskText
+                      inview={inView2}
+                      customStyles={`w-[100%]  md:w-[80%] max-sm:w-[100%]  max-xl:w-[90%] leading-7 [&:not(:first-child)]: mt-3 lg:text-[17px] sm:text-[16px] max-sm:text-[14px] font-ravi font-light`}
+                    >
+                      {t("about.description2")}
                     </MaskText>
                   </div>
-                  <div className="w-full flex justify-end px-4">
+                  {/* <div className="w-full flex justify-end px-4">
                     <Link href="/about">
                       <Button>
                         {t("about.cta")}
                       </Button>
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="absolute top-[-10px] xl:left-[250px] lg:left-[220px] w-[100%] z-[-1px] ">
                   <img src="./grouped.webp" alt="img" />
