@@ -2,6 +2,8 @@ import React from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { useInView } from "react-intersection-observer";
 import { Variant } from "framer-motion";
+import ImageReveal from "@/components/animation/ImageReveal";
+
 type Props = {};
 
 type Variants = {
@@ -16,10 +18,11 @@ function HeroImage({}: Props) {
   return (
     <div className="bg-regal_green">
       <div className="w-[95%] relative mx-auto">
+      <ImageReveal>
         <div className="relative w-full overflow-hidden h-full flex justify-center">
           <img
             className={
-             `max-w-7xl ${inView ? `transform transition duration-1000 scale-105` : ""}`
+            `max-w-7xl ${inView ? `transform transition duration-1000 scale-105` : ""}`
             }
             src="./heroImage.webp"
             alt="img"
@@ -46,6 +49,7 @@ function HeroImage({}: Props) {
             </Link>
           </div> */}
         </div>
+      </ImageReveal>
       </div>
     </div>
   );
