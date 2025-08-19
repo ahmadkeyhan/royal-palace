@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import { LanguageProvider } from "@/contexts/LanguageContext"
+import { AuthProvider } from "@/contexts/AuthContext"
 import { LayoutWrapper } from "@/components/layout-wrapper"
 
 const doran = localFont({
@@ -100,9 +101,11 @@ export default function RootLayout({
       <body className={`${doran.variable} ${miracle.variable} ${ravi.variable}`}>
         <StoreProvider>
             <LanguageProvider>
-              <LayoutWrapper>
-                {children}
-              </LayoutWrapper>
+              <AuthProvider>
+                <LayoutWrapper>
+                  {children}
+                </LayoutWrapper>
+              </AuthProvider>
             </LanguageProvider>
           <Toaster />
         </StoreProvider>
