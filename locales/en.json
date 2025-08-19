@@ -55,7 +55,17 @@
       "4":"Evening 16:00 - 19:00",
       "5":"Dinner 20:00 - 22:00"
     },
-    "description3": []
+    "description3": {
+      "1":"Sport Complex floor -2 (closed on weekends)",
+      "2":"Women 10:00 - 15:00",
+      "3":"Men 15:00 - 22:00",
+      "4":"(Sauna, Jacuzzi, Gym, and Turkish bath)",
+      "5":"Parking lot floor -1",
+      "6":"Laundry 9:00 - 15:00",
+      "7":"Check out at 12PM",
+      "8":"Check in at 2PM",
+      "9":"(Breakfast, Gym, Sauna, Jacuzzi and Turkish bath is free for staying guests.)"
+    }
   },
   "about": {
     "title1": "ABOUT",
