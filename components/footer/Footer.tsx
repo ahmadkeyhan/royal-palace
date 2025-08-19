@@ -61,12 +61,12 @@ const Footer: React.FC = (props: Props) => {
           </p>
         </div> */}
         <div className="w-full">
-          <div className="h-[1px] w-full bg-gray-200 hidden "> </div>
-          <div className="flex sm:col-span-2 justify-center items-center gap-2 text-sm py-2 text-gray-400">
+          <div className="flex sm:col-span-2 justify-center items-center gap-2 text-sm py-4 text-gray-400">
             <Laptop className="w-4 h-4" />
             <p>{t("footer.developed")}<Link href="https://www.instagram.com/key.hansa" target="_blank" rel="noopener noreferrer"><span className="border-b-2 border-golden_yellow font-bold">{t("footer.by")}</span></Link></p>
           </div>
-          <p className="opacity-[0.4]  text-center mt-6">
+          <div className="h-[1px] w-full bg-gray-200"> </div>
+          <p className="opacity-[0.4] mt-4 text-center">
             {t("footer.copyright")}
           </p>
         </div>
