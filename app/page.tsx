@@ -14,6 +14,7 @@ import About_us from "@/components/home/home_about_us/About_us";
 import FadeIn from "@/components/animation/FadeIn";
 import SmoothScroll from "@/components/animation/SmoothScroll";
 import Guide from "@/components/home/guide";
+import Comments from "@/components/home/comments";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
           <HeroHeader />
           <HeroImage />
         </div>
+        <Comments />
         <Guide />
         <About_us />
         {/* <Home_Slider /> */}
