@@ -12,14 +12,13 @@ export default function Comments() {
 //   const t = getTranslations(language)
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 bg-off-white">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-4 flex items-center justify-center gap-2">
-            <MessageCircle className="w-8 h-8" />
+          <h1 className="text-3xl font-bold text-text_royal_green leading-normal mb-4 flex items-center justify-center gap-2">
             {t("comments.pageTitle")}
           </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">{t("comments.pageDescription")}</p>
+          <p className="text-muted-foreground max-w-2xl mx-auto font-ravi text-sm">{t("comments.pageDescription")}</p>
         </div>
 
         <CommentsSection

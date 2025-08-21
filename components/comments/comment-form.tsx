@@ -10,10 +10,11 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Loader2, Star, Send, Phone, User } from "lucide-react"
+import { Loader2, Star, Send, Phone, User, MessageCircle } from "lucide-react"
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
 import { useLanguage } from "@/contexts/LanguageContext"
 import { sendOTPAction, createCommentAction, submitCommentWithOTPAction } from "@/lib/actions"
+import { formatCurrency } from "@/lib/utils"
 
 const commentSchema = z.object({
   fullname: z.string().min(2, "Full name must be at least 2 characters").optional(),
@@ -43,7 +44,7 @@ interface CommentFormProps {
 export default function CommentForm({ isAuthenticated = false, guestData, onSubmitSuccess }: CommentFormProps) {
 //   const { language } = useLanguage()
 //   const t = getTranslations(language)
-const { t } = useLanguage()
+const { t, isRTL } = useLanguage()
 
   const [step, setStep] = useState<"form" | "otp">("form")
   const [isLoading, setIsLoading] = useState(false)
@@ -153,17 +154,17 @@ const { t } = useLanguage()
 
   const renderStars = () => {
     return (
-      <div className="flex gap-1">
+      <div className="flex gap-[5px]">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((star) => (
           <button
             key={star}
             type="button"
             onClick={() => setValue("rating", star)}
-            className={`p-1 transition-colors ${
-              star <= rating ? "text-yellow-400" : "text-gray-300"
-            } hover:text-yellow-400`}
+            className={`transition-colors ${
+              star <= rating ? "text-golden_yellow" : "text-gray-300"
+            } hover:text-golden_yellow`}
           >
-            <Star className="w-5 h-5 fill-current" />
+            <Star className="w-4 h-4 fill-current" />
           </button>
         ))}
       </div>
@@ -172,32 +173,33 @@ const { t } = useLanguage()
 
   if (step === "otp") {
     return (
-      <Card className="w-full max-w-md mx-auto">
+      <Card className="w-full max-w-md mx-auto text-text_royal_green">
         <CardHeader className="text-center">
           <CardTitle className="flex items-center justify-center gap-2">
             <Phone className="w-5 h-5" />
             {t("comments.verifyPhone")}
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="font-ravi">
             {t("comments.otpSentTo")} {pendingData?.phone}
+            <p className="text-xs">پوشه‌ی اسپم را نیز چک کنید.</p>
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {error && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="font-ravi">
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
 
           {success && (
-            <Alert>
+            <Alert className="border-green-300 text-green-600 font-ravi">
               <AlertDescription>{success}</AlertDescription>
             </Alert>
           )}
 
           <div className="space-y-2">
             <Label>{t("comments.enterOtp")}</Label>
-            <div className="flex justify-center">
+            <div className="flex justify-center font-ravi">
               <InputOTP maxLength={6} value={otpCode} onChange={setOtpCode}>
                 <InputOTPGroup>
                   <InputOTPSlot index={0} />
@@ -211,7 +213,7 @@ const { t } = useLanguage()
             </div>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-2 font-ravi">
             <Button
               type="button"
               variant="outline"
@@ -236,24 +238,24 @@ const { t } = useLanguage()
   }
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
-      <CardHeader>
+    <Card className="w-full max-w-2xl mx-auto text-text_royal_green">
+      <CardHeader className="gap-2 mb-4">
         <CardTitle className="flex items-center gap-2">
-          <Send className="w-5 h-5" />
+          <MessageCircle className="w-5 h-5" />
           {t("comments.leaveComment")}
         </CardTitle>
-        <CardDescription>{isAuthenticated ? t("comments.authenticatedDesc") : t("comments.guestDesc")}</CardDescription>
+        <CardDescription className="font-ravi text-xs">{isAuthenticated ? t("comments.authenticatedDesc") : t("comments.guestDesc")}</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {error && (
-            <Alert variant="destructive">
+            <Alert variant="destructive" className="font-ravi">
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
 
           {success && (
-            <Alert>
+            <Alert className="border-green-300 text-green-600 font-ravi">
               <AlertDescription>{success}</AlertDescription>
             </Alert>
           )}
@@ -266,8 +268,8 @@ const { t } = useLanguage()
                   <User className="w-4 h-4" />
                   {t("comments.fullName")}
                 </Label>
-                <Input id="fullname" {...register("fullname")} placeholder={t("comments.fullNamePlaceholder")} />
-                {errors.fullname && <p className="text-sm text-red-500">{errors.fullname.message}</p>}
+                <Input id="fullname" className="font-ravi text-sm" {...register("fullname")} placeholder={t("comments.fullNamePlaceholder")} />
+                {errors.fullname && <p className="text-sm font-ravi text-red-500">{errors.fullname.message}</p>}
               </div>
 
               <div className="space-y-2">
@@ -275,8 +277,8 @@ const { t } = useLanguage()
                   <Phone className="w-4 h-4" />
                   {t("comments.phoneNumber")}
                 </Label>
-                <Input id="phone" {...register("phone")} placeholder="09123456789" dir="ltr" />
-                {errors.phone && <p className="text-sm text-red-500">{errors.phone.message}</p>}
+                <Input id="phone" className="font-ravi text-sm" {...register("phone")} placeholder="09123456789" dir="ltr" />
+                {errors.phone && <p className="text-sm font-ravi text-red-500">{errors.phone.message}</p>}
               </div>
             </div>
           )}
@@ -285,11 +287,11 @@ const { t } = useLanguage()
           <div className="space-y-2">
             <Label className="flex items-center gap-2">
               <Star className="w-4 h-4" />
-              {t("comments.rating")} ({rating}/10)
+              {t("comments.rating")} ({isRTL? formatCurrency(rating) : rating}/{isRTL? formatCurrency(10) : "10"})
             </Label>
             <div className="flex items-center gap-2">
               {renderStars()}
-              <span className="text-sm text-muted-foreground ml-2">
+              <span className="text-sm font-ravi text-muted-foreground">
                 {rating <= 3 && t("comments.ratingPoor")}
                 {rating > 3 && rating <= 6 && t("comments.ratingGood")}
                 {rating > 6 && rating <= 8 && t("comments.ratingVeryGood")}
@@ -306,12 +308,12 @@ const { t } = useLanguage()
               {...register("comment")}
               placeholder={t("comments.commentPlaceholder")}
               rows={4}
-              className="resize-none"
+              className="resize-none font-ravi text-sm"
             />
             {errors.comment && <p className="text-sm text-red-500">{errors.comment.message}</p>}
           </div>
 
-          <Button type="submit" disabled={isLoading} className="w-full">
+          <Button type="submit" disabled={isLoading} className="w-full font-ravi">
             {isLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
             {isAuthenticated ? t("comments.submitComment") : t("comments.submitWithVerification")}
           </Button>
