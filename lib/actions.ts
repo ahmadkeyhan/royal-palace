@@ -150,11 +150,26 @@ export async function getApprovedCommentsAction() {
     await dbConnect()
 
     const comments = await Comment.find({ isApproved: true })
-      .populate("guestId", "fullname")
+      .populate({
+        path: "guestId",
+        select: "fullname",
+        model: "Guest",
+      })
       .sort({ createdAt: -1 })
       .limit(50)
+      .lean()
 
-    return { success: true, data: comments }
+    const transformedComments = comments.map((comment: any) => ({
+      _id: comment._id.toString(),
+      comment: comment.comment,
+      rating: comment.rating,
+      createdAt: comment.createdAt.toISOString(),
+      guestId: {
+        fullname: comment.guestId?.fullname || "Anonymous",
+      },
+    }))
+
+    return { success: true, data: transformedComments }
   } catch (error) {
     console.error("Fetch comments action error:", error)
     return { success: false, message: "Internal server error" }
