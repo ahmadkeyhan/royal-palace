@@ -44,7 +44,7 @@ interface LoginFormProps {
 
 export default function LoginForm({
   onSuccess,
-  showAsSignup = false,
+  showAsSignup = true,
 }: LoginFormProps) {
   //   const { language } = useLanguage()
   //   const t = getTranslations(language)
@@ -198,9 +198,9 @@ export default function LoginForm({
           <LogIn className="w-5 h-5" />
           {showAsSignup ? t("auth.signup") : t("auth.login")}
         </CardTitle>
-        <CardDescription>
+        {/* <CardDescription>
           {showAsSignup ? t("auth.signupDesc") : t("auth.loginDesc")}
-        </CardDescription>
+        </CardDescription> */}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -226,9 +226,10 @@ export default function LoginForm({
                 id="fullname"
                 {...register("fullname")}
                 placeholder={t("auth.fullNamePlaceholder")}
+                className="font-ravi text-sm"
               />
               {errors.fullname && (
-                <p className="text-sm text-red-500">
+                <p className="text-sm text-red-500 font-ravi">
                   {errors.fullname.message}
                 </p>
               )}
@@ -245,13 +246,14 @@ export default function LoginForm({
               {...register("phone")}
               placeholder="09123456789"
               dir="ltr"
+              className="font-ravi text-sm"
             />
             {errors.phone && (
-              <p className="text-sm text-red-500">{errors.phone.message}</p>
+              <p className="text-sm text-red-500 font-ravi">{errors.phone.message}</p>
             )}
           </div>
 
-          <Button type="submit" disabled={isLoading} className="w-full">
+          <Button type="submit" disabled={isLoading} className="w-full font-ravi">
             {isLoading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
             {showAsSignup ? t("auth.sendOtpSignup") : t("auth.sendOtpLogin")}
           </Button>
