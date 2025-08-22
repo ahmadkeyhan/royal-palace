@@ -16,12 +16,7 @@ import { useLanguage } from "@/contexts/LanguageContext"
 import { sendOTPAction, createCommentAction, submitCommentWithOTPAction } from "@/lib/actions"
 import { formatCurrency } from "@/lib/utils"
 
-const commentSchema = z.object({
-  fullname: z.string().min(2, "Full name must be at least 2 characters").optional(),
-  phone: z
-    .string()
-    .regex(/^(\+98|0)?9\d{9}$/, "Please enter a valid Iranian phone number")
-    .optional(),
+const authenticatedCommentSchema = z.object({
   comment: z
     .string()
     .min(10, "Comment must be at least 10 characters")
@@ -29,7 +24,17 @@ const commentSchema = z.object({
   rating: z.number().min(1, "Rating must be at least 1").max(10, "Rating cannot exceed 10"),
 })
 
-type CommentFormData = z.infer<typeof commentSchema>
+const guestCommentSchema = z.object({
+  fullname: z.string().min(2, "Full name must be at least 2 characters"),
+  phone: z.string().regex(/^(\+98|0)?9\d{9}$/, "Please enter a valid Iranian phone number"),
+  comment: z
+    .string()
+    .min(10, "Comment must be at least 10 characters")
+    .max(1000, "Comment cannot exceed 1000 characters"),
+  rating: z.number().min(1, "Rating must be at least 1").max(10, "Rating cannot exceed 10"),
+})
+
+type CommentFormData = z.infer<typeof guestCommentSchema>
 
 interface CommentFormProps {
   isAuthenticated?: boolean
@@ -61,7 +66,7 @@ const { t, isRTL } = useLanguage()
     formState: { errors },
     reset,
   } = useForm<CommentFormData>({
-    resolver: zodResolver(commentSchema),
+    resolver: zodResolver(isAuthenticated ? authenticatedCommentSchema : guestCommentSchema),
     defaultValues: {
       fullname: guestData?.fullname || "",
       phone: guestData?.phone || "",
@@ -73,14 +78,25 @@ const { t, isRTL } = useLanguage()
   const rating = watch("rating")
 
   const onSubmit = async (data: CommentFormData) => {
+    console.log("[v0] Form submission started - isAuthenticated:", isAuthenticated, "guestData:", guestData)
     setError("")
     setSuccess("")
     setIsLoading(true)
 
     try {
       if (isAuthenticated && guestData) {
+
+        console.log("[v0] Authenticated user submitting comment:", {
+          guestId: guestData.id,
+          comment: data.comment,
+          rating: data.rating,
+        })
+
         // Authenticated user - submit comment directly
+        console.log("[v0] About to call createCommentAction")
         const result = await createCommentAction(guestData.id, data.comment, data.rating)
+
+        console.log("[v0] Create comment result:", result)
 
         if (result.success) {
           setSuccess(t('comments.submitSuccess'))
@@ -91,6 +107,7 @@ const { t, isRTL } = useLanguage()
         }
       } else {
         // Non-authenticated user - send OTP first
+        console.log('fuck')
         if (!data.fullname || !data.phone) {
           setError(t("comments.namePhoneRequired"))
           return
@@ -110,7 +127,7 @@ const { t, isRTL } = useLanguage()
         }
       }
     } catch (error) {
-        console.error("[v0] OTP request error:", error)
+        console.error("[v0] Comment submission error:", error)
       setError(t("comments.networkError"))
     } finally {
       setIsLoading(false)
