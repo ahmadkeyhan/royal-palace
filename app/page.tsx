@@ -15,6 +15,7 @@ import FadeIn from "@/components/animation/FadeIn";
 import SmoothScroll from "@/components/animation/SmoothScroll";
 import Guide from "@/components/home/guide";
 import Comments from "@/components/home/comments";
+import LoginForm from "@/components/auth/login-form";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
         <Comments />
         <Guide />
         <About_us />
+        <LoginForm />
         {/* <Home_Slider /> */}
         {/* <Facilities /> */}
         {/* <Faq /> */}
