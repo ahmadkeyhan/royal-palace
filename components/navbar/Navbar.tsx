@@ -3,24 +3,34 @@ import React, { memo, useState } from "react";
 
 import MobileNav from "../mobileNavbar/MobileNav";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-
+import { usePathname, useRouter } from "next/navigation";
+import { User, LogOut } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { MobileLanguageSwitcher } from "@/components/mobile-language-switcher";
 import { RTLAwareFlex } from "@/components/rtl-aware-flex";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 const Navbar = () => {
   const { t, isRTL } = useLanguage();
   const [menuState, setMenuState] = useState<boolean>(false);
+
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
+    router.push("/");
+  };
 
   const pathname = usePathname();
 
   const navigationItems = [
     { key: "home", href: "/" },
     { key: "menu", href: "/menu" },
-    { key: "admin", href: "/admin" },
+    // { key: "admin", href: "/admin" },
   ]
 
   return (
@@ -59,6 +69,24 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
+          <li className="flex gap-2">
+            <Link href={'/admin'}>
+                <Button variant="outline" size="sm" className="text-off-white hover:bg-golden_yellow">
+                    {session?.user ? session.user.name : "پنل ادمین"}
+                    <User className="w-4 h-4" />
+                </Button>
+              </Link>
+              {session?.user && (
+                  <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleLogout}
+                  className="text-qqdarkbrown hover:bg-qqcream"
+                  >
+                    <LogOut className="w-4 h-4" />
+                  </Button>
+              )}
+          </li>
         </ul>
         <div className="hidden min-[1200px]:flex items-center space-x-4">
           <LanguageSwitcher />

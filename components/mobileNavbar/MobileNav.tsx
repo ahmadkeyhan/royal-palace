@@ -3,6 +3,10 @@ import { AnimatePresence, motion, Variant } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Button } from "../ui/button";
+import { User, LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 
 interface INav {
   key: string;
@@ -22,7 +26,7 @@ const MobileNav = React.memo((props: IMenuState) => {
   const [navLinks, setNavLinks] = useState<INav[]>([
     { key: "home", href: "/" },
     { key: "menu", href: "/menu" },
-    { key: "admin", href: "/admin" },
+    // { key: "admin", href: "/admin" },
   ]);
 
   const menuLinks: IVariants = {
@@ -68,6 +72,14 @@ const MobileNav = React.memo((props: IMenuState) => {
   };
 
   const { t, isRTL } = useLanguage();
+
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await signOut({ redirect: false });
+    router.push("/");
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -121,6 +133,27 @@ const MobileNav = React.memo((props: IMenuState) => {
                   </div>
                 );
               })}
+              <div className="flex gap-2">
+                <Link 
+                  href={'/admin'}
+                  onClick={() => props.setMenuState((prev: boolean) => !prev)}
+                >
+                  <Button variant="outline" size="sm" className="text-qqdarkbrown">
+                      {session?.user ? session.user.name : "پنل ادمین"}
+                      <User className="w-4 h-4" />
+                  </Button>
+                </Link>
+                {session?.user && (
+                  <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleLogout}
+                  className="text-qqdarkbrown"
+                  >
+                    <LogOut className="w-4 h-4" />
+                  </Button>
+                )}
+              </div>
             </motion.div>
           </AnimatePresence>
           <div className="flex flex-col  w-full items-center gap-[20px]">
