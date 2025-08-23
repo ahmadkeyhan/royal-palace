@@ -1,15 +1,16 @@
-import mongoose, { type Document, Schema } from "mongoose"
+import mongoose, { model, Schema } from "mongoose"
 
-export interface IComment extends Document {
-  guestId: mongoose.Types.ObjectId
+export interface IComment {
+  _id?: mongoose.Types.ObjectId | string
+  guestId: mongoose.Types.ObjectId | string
   comment: string
   rating: number
   isApproved: boolean
-  createdAt: Date
-  updatedAt: Date
+  createdAt?: Date
+  updatedAt?: Date
 }
 
-const CommentSchema: Schema = new Schema(
+const CommentSchema = new Schema<IComment>(
   {
     guestId: {
       type: Schema.Types.ObjectId,
@@ -43,4 +44,4 @@ CommentSchema.index({ guestId: 1 })
 CommentSchema.index({ isApproved: 1 })
 CommentSchema.index({ createdAt: -1 })
 
-export default mongoose.models.Comment || mongoose.model<IComment>("Comment", CommentSchema)
+export const Comment = mongoose.models?.Comment || model<IComment>("Comment", CommentSchema)
