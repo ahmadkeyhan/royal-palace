@@ -20,6 +20,8 @@
     "logo_alt": "Bank Hotel Logo",
     "navigation": {
       "home": "Home",
+      "admin": "Admin",
+      "menu": "Menus",
       "about": "About Us",
       "rooms": "Rooms & Suites",
       "facilities": "Facilities",
