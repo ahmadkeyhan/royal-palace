@@ -25,10 +25,10 @@ const Navbar = () => {
 
   return (
     <nav className="bg-regal_green fixed top-0 left-0 z-30 w-full pb-1 border-[1px] border-transparent text-white">
-      <RTLAwareFlex
-        justify="between"
-        align="center"
-        className="m-[auto] py-1 w-[95%]"
+      <div
+        // justify="between"
+        // align="center"
+        className="m-[auto] flex justify-between items-center py-1 w-[95%]"
       >
         <Link href="/">
           <div className="flex items-center gap-2">
@@ -109,7 +109,7 @@ const Navbar = () => {
             </span>
           )}
         </div>
-      </RTLAwareFlex>
+      </div>
 
       {menuState && (
         <MobileNav menuState={menuState} setMenuState={setMenuState} />
