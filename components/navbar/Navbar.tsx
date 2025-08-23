@@ -19,11 +19,8 @@ const Navbar = () => {
 
   const navigationItems = [
     { key: "home", href: "/" },
-    { key: "about", href: "/about" },
-    { key: "rooms", href: "/rooms" },
-    { key: "facilities", href: "/facility" },
-    { key: "book a room", href: "/booking" },
-    { key: "contact", href: "/contacts" },
+    { key: "menu", href: "/menu" },
+    { key: "admin", href: "/admin" },
   ]
 
   return (

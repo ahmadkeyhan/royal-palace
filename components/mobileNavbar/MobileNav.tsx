@@ -21,11 +21,8 @@ interface IVariants {
 const MobileNav = React.memo((props: IMenuState) => {
   const [navLinks, setNavLinks] = useState<INav[]>([
     { key: "home", href: "/" },
-    { key: "about", href: "/about" },
-    { key: "rooms", href: "/rooms" },
-    { key: "facilities", href: "/facility" },
-    { key: "book a room", href: "/booking" },
-    { key: "contact", href: "/contacts" },
+    { key: "menu", href: "/menu" },
+    { key: "admin", href: "/admin" },
   ]);
 
   const menuLinks: IVariants = {
