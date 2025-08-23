@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache"
 import { createAndSendOTP, normalizePhoneNumber, validatePhoneNumber } from "@/lib/otp"
 import { authenticateWithOTP } from "@/lib/auth"
-import Comment from "@/models/Comment"
+import {Comment, type IComment } from "@/models/Comment"
 import Guest from "@/models/Guest"
 import dbConnect from "@/lib/mongodb"
 
@@ -173,5 +173,58 @@ export async function getApprovedCommentsAction() {
   } catch (error) {
     console.error("Fetch comments action error:", error)
     return { success: false, message: "Internal server error" }
+  }
+}
+
+export async function getComments() {
+  try {
+    await dbConnect()
+    const comments = await Comment.find()
+      .populate({
+        path: "guestId",
+        select: "fullname phone",
+        model: "Guest",
+      })
+      .sort({ createdAt: -1 })
+    return JSON.parse(JSON.stringify(comments));
+  } catch (error) {
+    console.error("Error fetching comments:", error)
+    throw new Error("Failed to fetch comments")
+  }
+}
+
+export async function updateComment(id: string, commentData: IComment) {
+  try {
+    await dbConnect();
+    const comment = await Comment.findByIdAndUpdate(
+      id,
+      { $set: commentData },
+      { new: true, runValidators: true }
+    );
+
+    if (!comment) {
+      throw new Error("Comment not found");
+    }
+
+    return JSON.parse(JSON.stringify(comment));
+  } catch (error) {
+    console.error("Error updating comment:", error);
+    throw new Error("Failed to update comment");
+  }
+}
+
+export async function deleteComment(id: string) {
+  try {
+    await dbConnect()
+    const deletedComment = await Comment.findByIdAndDelete(id)
+
+    if (!deletedComment) {
+      throw new Error("comment not found")
+    }
+
+    return { success: true }
+  } catch (error) {
+    console.error("Error deleting comment:", error)
+    throw new Error("Failed to delete comment")
   }
 }
