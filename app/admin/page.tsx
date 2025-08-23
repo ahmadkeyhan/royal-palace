@@ -6,7 +6,9 @@ import { useSession } from "next-auth/react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Skeleton } from "@/components/ui/skeleton";
 import CommentManager from "@/components/admin/comments/commentManager";
+import RouteSelector from "@/components/admin/routeSelector";
 import Navbar from "@/components/navbar/Navbar";
+import QRCodeGenerator from "@/components/admin/qrCode/qrCodeGenerator";
 
 export default function AdminPage() {
   const { data: session, status } = useSession();
@@ -46,6 +48,14 @@ export default function AdminPage() {
                 نظرات
               </TabsTrigger>
             )}
+            {isAdmin && (
+              <TabsTrigger
+                value="qr"
+                className="flex-grow px-2 lg:flex-grow-0 lg:justify-end lg:w-full lg:mb-1"
+              >
+                کیوآر
+              </TabsTrigger>
+            )}
           </TabsList>
           <div className="flex-1">
             {isAdmin && (
@@ -58,6 +68,19 @@ export default function AdminPage() {
                 </h1>
                 <Suspense fallback={<CommentSkeleton />}>
                   <CommentManager />
+                </Suspense>
+              </TabsContent>
+            )}
+            {isAdmin && (
+              <TabsContent
+                value="qr"
+                className="space-y-6 data-[state=active]:block"
+              >
+                <h1 className="text-xl font-bold text-text_royal_green font-doran text-center lg:text-end ">
+                  کیوآر کد
+                </h1>
+                <Suspense fallback={<CommentSkeleton />}>
+                  <QRCodeGenerator />
                 </Suspense>
               </TabsContent>
             )}
