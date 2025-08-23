@@ -1,3 +1,5 @@
+"use client"
+
 import type { Metadata } from "next";
 import localFont from "next/font/local"
 import { Toaster } from "@/components/ui/toaster";
@@ -6,6 +8,8 @@ import StoreProvider from "./StoreProvider";
 import { LanguageProvider } from "@/contexts/LanguageContext"
 import { AuthProvider } from "@/contexts/AuthContext"
 import { LayoutWrapper } from "@/components/layout-wrapper"
+import { ToastProvider } from "@/components/ui/toastContext";
+import { SessionProvider } from "next-auth/react"
 
 const doran = localFont({
   src: [
@@ -80,10 +84,10 @@ const ravi = localFont({
 
 
 
-export const metadata: Metadata = {
-  title: "BankHotel",
-  description: "Developed by Web Wizard",
-};
+// export const metadata: Metadata = {
+//   title: "BankHotel",
+//   description: "Developed by Web Wizard",
+// };
 
 export default function RootLayout({
   children,
@@ -99,16 +103,20 @@ export default function RootLayout({
         ></meta>
       </head>
       <body className={`${doran.variable} ${miracle.variable} ${ravi.variable}`}>
-        <StoreProvider>
+        <SessionProvider>
+          <StoreProvider>
             <LanguageProvider>
               <AuthProvider>
-                <LayoutWrapper>
-                  {children}
-                </LayoutWrapper>
+                <ToastProvider>
+                  <LayoutWrapper>
+                    {children}
+                  </LayoutWrapper>
+                </ToastProvider>
               </AuthProvider>
             </LanguageProvider>
-          <Toaster />
-        </StoreProvider>
+            <Toaster />
+          </StoreProvider>
+        </SessionProvider>
       </body>
     </html>
   );
