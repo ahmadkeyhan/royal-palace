@@ -54,7 +54,7 @@ export default function SortableMenuItem({ item }: SortableMenuItemProps) {
 
   return (
     <div ref={setNodeRef} style={style} className="mb-3 touch-manipulation">
-      <Card className={`overflow-hidden ${isDragging ? "shadow-lg" : ""}`}>
+      <Card className={`overflow-hidden py-0 bg-off-white ${isDragging ? "shadow-lg" : ""}`}>
         <CardContent className="p-0">
           <div className="p-3 flex flex-row-reverse gap-3">
             <Button

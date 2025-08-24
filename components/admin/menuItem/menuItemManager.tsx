@@ -10,9 +10,7 @@ import {
   X,
   ChevronDown,
   ChevronUp,
-  LucideListStart,
-  PlusCircle,
-  MinusCircle,
+  LucideListStart
 } from "lucide-react";
 import {
   DndContext,
@@ -50,14 +48,13 @@ import {
 } from "@/lib/data/itemData";
 import { getCategories } from "@/lib/data/categoryData";
 import { useToast } from "@/components/ui/toastContext";
-
 import ImageUploader from "../imageUploader";
 import Image from "next/image";
 import SortableMenuItem from "./sortableMenuItem";
 import { deleteImage } from "@/lib/imageUtils";
 import AvailabilityToggle from "./availabilityToggle";
-import * as LucideIcons from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
+import { Label } from "@/components/ui/label";
 
 interface item {
   _id: string;
@@ -170,11 +167,11 @@ export default function MenuItemManager({ isAdmin = true }) {
     setGroupedItems(grouped);
 
     // Expand all categories by default
-    if (categories.length > 0) {
-      const newExpanded = new Set<string>();
-      categories.forEach((category) => newExpanded.add(category.id));
-      setExpandedCategories(newExpanded);
-    }
+    // if (categories.length > 0) {
+    //   const newExpanded = new Set<string>();
+    //   categories.forEach((category) => newExpanded.add(category.id));
+    //   setExpandedCategories(newExpanded);
+    // }
   }, [items, categories]);
 
   const loadData = async () => {
@@ -196,89 +193,9 @@ export default function MenuItemManager({ isAdmin = true }) {
     setExpandedCategories(newExpanded);
   };
 
-  // Add a price list item to the new item form
-  //   const addPriceListItem = () => {
-  //     setNewItem({
-  //       ...newItem,
-  //       priceList: [...newItem.priceList, { subItem: "", price: 0 }],
-  //     })
-  //   }
-
-  // Remove a price list item from the new item form
-  //   const removePriceListItem = (index: number) => {
-  //     if (newItem.priceList.length <= 1) return
-
-  //     const updatedPriceList = [...newItem.priceList]
-  //     updatedPriceList.splice(index, 1)
-
-  //     setNewItem({
-  //       ...newItem,
-  //       priceList: updatedPriceList,
-  //     })
-  //   }
-
-  // Update a price list item in the new item form
-  //   const updatePriceListItem = (index: number, field: "subItem" | "price", value: string | number) => {
-  //     const updatedPriceList = [...newItem.priceList]
-  //     updatedPriceList[index] = {
-  //       ...updatedPriceList[index],
-  //       [field]: field === "price" ? Number(value) : value,
-  //     }
-
-  //     setNewItem({
-  //       ...newItem,
-  //       priceList: updatedPriceList,
-  //     })
-  //   }
-
-  // Add a price list item to the edit form
-  //   const addEditPriceListItem = () => {
-  //     setEditForm({
-  //       ...editForm,
-  //       priceList: [...editForm.priceList, { subItem: "", price: 0 }],
-  //     })
-  //   }
-
-  // Remove a price list item from the edit form
-  //   const removeEditPriceListItem = (index: number) => {
-  //     if (editForm.priceList.length <= 1) return
-
-  //     const updatedPriceList = [...editForm.priceList]
-  //     updatedPriceList.splice(index, 1)
-
-  //     setEditForm({
-  //       ...editForm,
-  //       priceList: updatedPriceList,
-  //     })
-  //   }
-
-  // Update a price list item in the edit form
-  //   const updateEditPriceListItem = (index: number, field: "subItem" | "price", value: string | number) => {
-  //     const updatedPriceList = [...editForm.priceList]
-  //     updatedPriceList[index] = {
-  //       ...updatedPriceList[index],
-  //       [field]: field === "price" ? Number(value) : value,
-  //     }
-
-  //     setEditForm({
-  //       ...editForm,
-  //       priceList: updatedPriceList,
-  //     })
-  //   }
-
   const handleCreateSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      // Validate price list if using it
-      //   const invalidItems = newItem.priceList.filter((item) => !item.subItem || item.price <= 0)
-      //   if (invalidItems.length > 0) {
-      //     toast({
-      //       title: "Invalid price list",
-      //       description: "All price list items must have a name and a price greater than zero.",
-      //       variant: "destructive",
-      //     })
-      //     return
-      //   }
 
       const formattedItem = {
         ...newItem,
@@ -326,16 +243,6 @@ export default function MenuItemManager({ isAdmin = true }) {
   const handleUpdateSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      //   const invalidItems = editForm.priceList.filter((item) => !item.subItem || item.price <= 0)
-      //   if (invalidItems.length > 0) {
-      //     toast({
-      //       title: "Invalid price list",
-      //       description: "All price list items must have a name and a price greater than zero.",
-      //       variant: "destructive",
-      //     })
-      //     return
-      //   }
-
       const formattedItem = {
         ...editForm,
         _id: editingId,
@@ -442,16 +349,16 @@ export default function MenuItemManager({ isAdmin = true }) {
         await reorderMenuItems(isReordering, orderedIds);
 
         toast({
-          title: "Menu items reordered",
-          description: "The order of menu items has been updated.",
+          title: "تغییر موفق ترتیب لیست",
+          description: "",
         });
       } catch (error: any) {
         // If there's an error, reload the original order
         loadData();
 
         toast({
-          title: "Error reordering menu items",
-          description: error.message || "Failed to update menu item order",
+          title: "خطا در تغییر ترتیب لیست",
+          description: error.message || "",
           variant: "destructive",
         });
       } finally {
@@ -460,23 +367,6 @@ export default function MenuItemManager({ isAdmin = true }) {
     }
   };
 
-  // Get the price range if there's a price list
-  //    const getPriceRange = (item: item) => {
-
-  //     if (item.priceList.length === 1) {
-  //       return item.priceList[0].price;
-  //     }
-
-  //     if (item.priceList.length > 1) {
-  //       const prices = item.priceList.map((p: priceListItem) => p.price);
-  //       const minPrice = Math.min(...prices);
-  //       const maxPrice = Math.max(...prices);
-
-  //       if (minPrice === maxPrice) return minPrice;
-  //       return `${minPrice} - ${maxPrice}`;
-  //     }
-  //   };
-
   return (
     <div className="space-y-6">
       {isAdmin && (
@@ -484,8 +374,8 @@ export default function MenuItemManager({ isAdmin = true }) {
           onSubmit={handleCreateSubmit}
           className="space-y-4 p-4 border border-slate-200 rounded-lg bg-white"
         >
-          <h3 className="font-semibold text-qqteal">افزودن آیتم‌ جدید</h3>
-          <div dir="rtl" className="grid gap-4 sm:grid-cols-2">
+          <h3 className="font-semibold text-text_royal_green font-doran">افزودن آیتم‌ جدید</h3>
+          <div dir="rtl" className="grid gap-4 sm:grid-cols-2 font-ravi">
             <div>
               <Input
                 placeholder="عنوان آیتم"
@@ -505,58 +395,21 @@ export default function MenuItemManager({ isAdmin = true }) {
                 }
               />
             </div>
-            {/* <div className="sm:col-span-2">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-base font-medium text-qqteal">لیست زیرآیتم‌ها</h3>
-                  <Button type="button" variant="outline" size="sm" onClick={addPriceListItem} className="h-8 text-base">
-                    <PlusCircle className="h-4 w-4 mr-1" />
-                    ایجاد زیرآیتم‌
-                  </Button>
-                </div>
-                {newItem.priceList.map((priceItem, index) => (
-                  <div key={index} className="flex items-center gap-2 mb-2">
-                    <Input
-                      placeholder="نام زیرآیتم"
-                      value={priceItem.subItem}
-                      onChange={(e) => updatePriceListItem(index, "subItem", e.target.value)}
-                      required
-                      className="flex-1"
-                    />
-                    <Input
-                      placeholder="قیمت"
-                      type="number"
-                      step="0.01"
-                      min="0"
-                      value={priceItem.price || ""}
-                      onChange={(e) => updatePriceListItem(index, "price", e.target.value)}
-                      required
-                      className="w-24"
-                    />
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => removePriceListItem(index)}
-                      disabled={newItem.priceList.length <= 1}
-                      className="h-8 w-8 text-red-500"
-                    >
-                      <MinusCircle className="h-4 w-4" />
-                    </Button>
-                  </div>
-                ))}
-              </div> */}
-            <Input
-              placeholder="قیمت"
-              type="number"
-              step="0.01"
-              min="0"
-              value={newItem.price}
-              onChange={(e) =>
-                setNewItem({ ...newItem, price: Number(e.target.value) })
-              }
-              required
-              className="w-24"
-            />
+            <div className="sm:col-span-2 flex gap-2 items-center">
+                <Input
+                    placeholder="قیمت"
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    value={newItem.price}
+                    onChange={(e) =>
+                        setNewItem({ ...newItem, price: Number(e.target.value) })
+                    }
+                    required
+                    className="w-24"
+                />
+                <Label className="text-xs">قیمت (هزار تومان)</Label>
+            </div>
             <div>
               <Textarea
                 placeholder="مواد تشکیل دهنده (اختیاری)"
@@ -595,7 +448,7 @@ export default function MenuItemManager({ isAdmin = true }) {
             </div>
           </div>
           <div className="flex">
-            <Button type="submit" className="bg-qqteal hover:bg-amber-600 ">
+            <Button type="submit" className="bg-golden_yellow font-ravi gap-2 hover:bg-amber-600 ">
               <Plus className="w-4 h-4" />
               افزودن آیتم به منو
             </Button>
@@ -615,13 +468,13 @@ export default function MenuItemManager({ isAdmin = true }) {
             const isExpanded = expandedCategories.has(category.id);
 
             return (
-              <Card key={category.id} className="overflow-hidden">
+              <Card key={category.id} className={`overflow-hidden py-0 font-ravi bg-${category.menu === "restaurant" ? "regal_green" : "white"} text-${category.menu === "restaurant" ? "white" : "text_royal_green"}`}>
                 <CardHeader
                   className="py-3 px-4 cursor-pointer"
                   onClick={() => toggleCategory(category.id)}
                 >
                   <div className="flex flex-row-reverse justify-between items-center text-qqdarkbrown">
-                    <CardTitle className="text-lg flex items-center">
+                    <CardTitle className="text-lg flex items-center font-doran">
                       <h2>{category.name}</h2>
                     </CardTitle>
                     <Button variant="ghost" size="sm" className="p-0 h-8 w-8">
@@ -637,7 +490,7 @@ export default function MenuItemManager({ isAdmin = true }) {
                 {isExpanded && (
                   <CardContent className="pt-0 pb-3 px-3">
                     {categoryItems.length === 0 ? (
-                      <div className="text-center py-4 text-qqbrown">
+                      <div dir="rtl" className={`text-center py-4 text-${category.menu === "restaurant" ? "white" : "text_royal_green"} font-ravi`}>
                         <h3>آیتمی در این دسته‌بندی موجود نیست.</h3>
                       </div>
                     ) : (
@@ -649,6 +502,7 @@ export default function MenuItemManager({ isAdmin = true }) {
                                 variant="outline"
                                 size="sm"
                                 onClick={() => setIsReordering(null)}
+                                className="border-golden_yellow gap-2"
                               >
                                 <X className="w-4 h-4" />
                                 انصراف
@@ -659,6 +513,7 @@ export default function MenuItemManager({ isAdmin = true }) {
                                 size="sm"
                                 onClick={() => setIsReordering(category.id)}
                                 disabled={isReordering !== null}
+                                className="border-golden_yellow gap-2"
                               >
                                 <LucideListStart className="h-5 w-5" />
                                 <p>تغییر ترتیب لیست</p>
@@ -706,7 +561,7 @@ export default function MenuItemManager({ isAdmin = true }) {
                                       >
                                         <div
                                           dir="rtl"
-                                          className="grid gap-4 sm:grid-cols-2"
+                                          className="grid gap-4 sm:grid-cols-2 font-ravi"
                                         >
                                           <div>
                                             <Input
@@ -839,7 +694,7 @@ export default function MenuItemManager({ isAdmin = true }) {
                                 return (
                                   <Card
                                     key={item._id}
-                                    className="overflow-hidden"
+                                    className="overflow-hidden py-0 bg-off-white"
                                   >
                                     <CardContent className="p-0">
                                       <div className="p-4 flex flex-row-reverse gap-4 items-center">
