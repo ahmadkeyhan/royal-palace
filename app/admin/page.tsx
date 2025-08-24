@@ -12,6 +12,7 @@ import QRCodeGenerator from "@/components/admin/qrCode/qrCodeGenerator";
 import PasswordManager from "@/components/admin/user/passwordManager";
 import UserManager from "@/components/admin/user/userManager";
 import CategoryManager from "@/components/admin/category/categoryManager";
+import MenuItemManager from "@/components/admin/menuItem/menuItemManager";
 
 export default function AdminPage() {
   const { data: session, status } = useSession();
@@ -51,6 +52,12 @@ export default function AdminPage() {
                 دسته‌بندی‌ها
               </TabsTrigger>
             )}
+            <TabsTrigger
+              value="items"
+              className="flex-grow px-2 lg:flex-grow-0 lg:justify-end lg:w-full lg:mb-1"
+            >
+              آیتم‌ها
+            </TabsTrigger>
             {isAdmin && (
               <TabsTrigger
                 value="comments"
@@ -90,6 +97,17 @@ export default function AdminPage() {
                 </Suspense>
               </TabsContent>
             )}
+            <TabsContent
+              value="items"
+              className="space-y-6 data-[state=active]:block"
+            >
+              <h1 className="text-xl font-bold text-text_royal_green font-doran text-center lg:text-end ">
+                مدیریت آیتم‌ها
+              </h1>
+              <Suspense fallback={<CommentSkeleton />}>
+                <MenuItemManager isAdmin={isAdmin} />
+              </Suspense>
+            </TabsContent>
             {isAdmin && (
               <TabsContent
                 value="comments"
