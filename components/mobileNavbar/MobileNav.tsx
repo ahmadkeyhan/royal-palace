@@ -138,7 +138,7 @@ const MobileNav = React.memo((props: IMenuState) => {
                   href={'/admin'}
                   onClick={() => props.setMenuState((prev: boolean) => !prev)}
                 >
-                  <Button variant="outline" size="sm" className="text-qqdarkbrown">
+                  <Button variant="outline" size="sm" className="text-off-white hover:bg-golden_yellow">
                       {session?.user ? session.user.name : "پنل ادمین"}
                       <User className="w-4 h-4" />
                   </Button>
@@ -148,7 +148,7 @@ const MobileNav = React.memo((props: IMenuState) => {
                   variant="outline"
                   size="sm"
                   onClick={handleLogout}
-                  className="text-qqdarkbrown"
+                  className="hover:bg-off-white"
                   >
                     <LogOut className="w-4 h-4" />
                   </Button>

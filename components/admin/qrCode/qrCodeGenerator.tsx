@@ -248,11 +248,11 @@ export default function QRCodeGenerator() {
             <TabsContent value="basic" className="space-y-4">
               <div dir="rtl" className="grid gap-8 grid-cols-2">
                 <div className="flex flex-col gap-2 col-span-2 sm:col-span-1">
-                  <Label className="text-base text-qqdarkbrown" htmlFor="url">آدرس کیوآر</Label>
+                  <Label className="text-base text-text_royal_green" htmlFor="url">آدرس کیوآر</Label>
                   <RouteSelector value={url.slice(baseUrl.length - url.length)} onChange={(route) => setUrl(baseUrl + route)} />
                 </div>
                 <div className="flex flex-col gap-4 col-span-2 sm:col-span-1">
-                  <Label className="text-base text-qqdarkbrown">{`ابعاد دانلود: ${downloadSize} پیکسل`}</Label>
+                  <Label className="text-base text-text_royal_green">{`ابعاد دانلود: ${downloadSize} پیکسل`}</Label>
                   <Slider
                     dir="rtl"
                     value={[downloadSize]}
@@ -263,7 +263,7 @@ export default function QRCodeGenerator() {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <Label className="text-base text-qqdarkbrown" htmlFor="fgColor">رنگ پیش‌زمینه</Label>
+                  <Label className="text-base text-text_royal_green" htmlFor="fgColor">رنگ پیش‌زمینه</Label>
                   <Input
                     id="fgColor"
                     type="color"
@@ -273,7 +273,7 @@ export default function QRCodeGenerator() {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <Label className="text-base text-qqdarkbrown" htmlFor="bgColor">رنگ پس‌زمینه</Label>
+                  <Label className="text-base text-text_royal_green" htmlFor="bgColor">رنگ پس‌زمینه</Label>
                   <Input
                     id="bgColor"
                     type="color"
@@ -300,7 +300,7 @@ export default function QRCodeGenerator() {
                     step={1}
                     onValueChange={(value) => setLogoSize(value[0])}
                   />
-                  <p className="text-base text-qqbrown">
+                  <p className="text-base text-text_royal_green">
                     ابعاد واقعی: {getLogoSizePixels(true)} پیکسل × {getLogoSizePixels(true)} پیکسل
                   </p>
                 </div>

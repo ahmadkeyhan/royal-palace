@@ -81,7 +81,7 @@ const Navbar = () => {
                   variant="outline"
                   size="sm"
                   onClick={handleLogout}
-                  className="text-qqdarkbrown hover:bg-qqcream"
+                  className="hover:bg-off-white"
                   >
                     <LogOut className="w-4 h-4" />
                   </Button>
