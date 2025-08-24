@@ -221,7 +221,7 @@ export default function UserManager() {
                 </CardContent>
               </Card>
             ) : (
-              <Card key={user.id} className="overflow-hidden mb-3">
+              <Card key={user.name} className="overflow-hidden py-0 mb-3">
                 <CardContent className="p-0">
                   <div className="p-4 flex flex-row-reverse justify-between items-center">
                     <div>
