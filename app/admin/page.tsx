@@ -11,6 +11,7 @@ import Navbar from "@/components/navbar/Navbar";
 import QRCodeGenerator from "@/components/admin/qrCode/qrCodeGenerator";
 import PasswordManager from "@/components/admin/user/passwordManager";
 import UserManager from "@/components/admin/user/userManager";
+import CategoryManager from "@/components/admin/category/categoryManager";
 
 export default function AdminPage() {
   const { data: session, status } = useSession();
@@ -38,10 +39,18 @@ export default function AdminPage() {
       <Navbar />
       <div className="container px-4 py-6 mx-auto max-w-6xl">
         <Tabs
-          defaultValue="comments"
+          defaultValue="categories"
           className="w-full flex flex-col lg:flex-row-reverse gap-6"
         >
           <TabsList className="flex flex-wrap lg:flex-col lg:justify-start h-auto lg:h-[500px] w-full lg:w-48 bg-amber-100 text-text_royal_green p-1 lg:p-2 lg:shrink-0 rounded-lg">
+            {isAdmin && (
+              <TabsTrigger
+                value="categories"
+                className="flex-grow px-2 lg:flex-grow-0 lg:justify-end lg:w-full lg:mb-1"
+              >
+                دسته‌بندی‌ها
+              </TabsTrigger>
+            )}
             {isAdmin && (
               <TabsTrigger
                 value="comments"
@@ -68,6 +77,19 @@ export default function AdminPage() {
             )}
           </TabsList>
           <div className="flex-1">
+            {isAdmin && (
+              <TabsContent
+                value="categories"
+                className="space-y-6 data-[state=active]:block"
+              >
+                <h1 className="text-xl font-bold text-text_royal_green font-doran text-center lg:text-end ">
+                  مدیریت دسته‌بندی‌ها
+                </h1>
+                <Suspense fallback={<CommentSkeleton />}>
+                  <CategoryManager />
+                </Suspense>
+              </TabsContent>
+            )}
             {isAdmin && (
               <TabsContent
                 value="comments"
