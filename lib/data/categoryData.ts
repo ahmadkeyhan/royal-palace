@@ -9,7 +9,7 @@ import mongoose from "mongoose";
 export async function getCategories() {
   try {
     await dbConnect();
-    const categories = await Category.find().sort({ order: 1, name: 1 });
+    const categories = await Category.find().sort({ menu: 1, order: 1, name: 1 });
     return JSON.parse(JSON.stringify(categories));
   } catch (error) {
     console.error("Error fetching categories:", error);
