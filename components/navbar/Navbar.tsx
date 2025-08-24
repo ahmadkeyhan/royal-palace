@@ -34,7 +34,7 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className="bg-regal_green fixed top-0 left-0 z-30 w-full pb-1 border-[1px] border-transparent text-white">
+    <nav className="bg-regal_green fixed top-0 left-0 z-30 w-full pb-1 text-white">
       <div
         // justify="between"
         // align="center"
