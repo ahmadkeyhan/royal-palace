@@ -34,7 +34,7 @@ export default function AdminPage() {
   const isAdmin = session?.user?.role === "admin";
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-amber-50 to-white">
+    <main className="min-h-screen bg-off-white from-amber-50 to-white">
       <Navbar />
       <div className="container px-4 py-6 mx-auto max-w-6xl">
         <Tabs
