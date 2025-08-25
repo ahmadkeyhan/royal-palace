@@ -20,10 +20,10 @@ export default function Home() {
           <HeroHeader />
           <HeroImage />
         </div>
-        <Comments />
         <Guide />
-        <About_us />
         <LoginForm />
+        <Comments />
+        <About_us />
         <Footer />
       </FadeIn>
     </SmoothScroll>
