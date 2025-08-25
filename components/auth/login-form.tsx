@@ -192,7 +192,7 @@ export default function LoginForm({
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card id="club" className="w-full max-w-md mx-auto">
       <CardHeader className="text-center">
         <CardTitle className="flex items-center justify-center gap-2">
           <LogIn className="w-5 h-5" />

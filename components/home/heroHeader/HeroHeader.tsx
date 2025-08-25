@@ -142,7 +142,7 @@ const HeroHeader = () => {
   }
 
   return (
-    <div className="w-full bg-regal_green pt-8">
+    <div className="w-full bg-regal_green pt-2">
       <div className="flex justify-around gap-4 w-full m-auto text-white max-[900px]:items-center max-[760px]:flex-col">
         <div className="flex h-20 sm:h-32 pt-4 justify-center gap-1 overflow-hidden">
           {t('banner.title').split(' ').map((bank: string, index) => {
@@ -163,11 +163,11 @@ const HeroHeader = () => {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex justify-center text-center">
-            <p className="px-12 -mt-2 w-[28ch] leading-loose">
+            <p className="px-12 text-lg -mt-2 w-[28ch] leading-loose">
               {t('banner.subtitle')}
             </p>
           </div>
-          <div className="flex justify-center font-ravi items-center gap-6 mb-8">
+          <div className="flex justify-center font-ravi items-center gap-6 mb-2">
             <Link href="/menu">
               <Button variant="default">
                 {t("banner.cta_primary")}
@@ -176,6 +176,18 @@ const HeroHeader = () => {
             <AnchorLink href="#guide">
               <Button variant="outline">
                 {t("banner.cta_secondary")}
+              </Button>
+            </AnchorLink>
+          </div>
+          <div className="flex justify-center font-ravi items-center gap-6 mb-6">
+            <AnchorLink href="#club">
+              <Button variant="outline">
+                {t("banner.cta_third")}
+              </Button>
+            </AnchorLink>
+            <AnchorLink href="#comment">
+              <Button variant="outline">
+                {t("banner.cta_fourth")}
               </Button>
             </AnchorLink>
           </div>
