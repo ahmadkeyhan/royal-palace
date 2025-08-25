@@ -12,10 +12,13 @@ import * as LucideIcons from "lucide-react"
 interface item {
   _id: string;
   name: string;
+  enName: string;
   description: string;
+  enDescription: string;
   price: number;
   categoryId: string;
   ingredients: string;
+  enIngredients: string;
   image: string;
   order: number;
   available: boolean

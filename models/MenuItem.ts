@@ -5,10 +5,13 @@ import mongoose from "mongoose"
 export interface IMenuItem {
   _id?: mongoose.Types.ObjectId | string
   name: string
+  enName: string
   description?: string
+  enDescription?: string
   price: Number
   categoryId: mongoose.Types.ObjectId | string
   ingredients?: string
+  enIngredients?: string
   image?: string
   order?: number
   available: boolean
@@ -19,7 +22,9 @@ export interface IMenuItem {
 const menuItemSchema = new Schema<IMenuItem>(
   {
     name: { type: String, required: true },
+    enName: { type: String, required: true },
     description: { type: String},
+    enDescription: { type: String},
     price: {type: Number, required: true},
     categoryId: {
         type: Schema.Types.ObjectId,
@@ -27,6 +32,7 @@ const menuItemSchema = new Schema<IMenuItem>(
         required: true,
     },
     ingredients: { type: String },
+    enIngredients: { type: String },
     image: { type: String },
     order: { type: Number, default: 0 },
     available: { type: Boolean, default: true },

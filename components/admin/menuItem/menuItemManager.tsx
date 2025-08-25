@@ -59,10 +59,13 @@ import { Label } from "@/components/ui/label";
 interface item {
   _id: string;
   name: string;
+  enName: string;
   description: string;
+  enDescription: string;
   price: number;
   categoryId: string;
   ingredients: string;
+  enIngredients: string;
   image: string;
   order: number;
   available: boolean;
@@ -81,10 +84,13 @@ interface groupedItems {
 
 type FormMenuItem = {
   name: string;
+  enName: string;
   description: string;
+  enDescription: string;
   price: number;
   categoryId: string;
   ingredients: string;
+  enIngredients: string;
   image: string;
   available: boolean;
 };
@@ -95,20 +101,26 @@ export default function MenuItemManager({ isAdmin = true }) {
   const [categories, setCategories] = useState<category[]>([]);
   const [newItem, setNewItem] = useState<FormMenuItem>({
     name: "",
+    enName: "",
     description: "",
+    enDescription: "",
     price: 0,
     categoryId: "",
     ingredients: "",
+    enIngredients: "",
     image: "",
     available: true,
   });
   const [editingId, setEditingId] = useState<string>("");
   const [editForm, setEditForm] = useState<FormMenuItem>({
     name: "",
+    enName: "",
     description: "",
+    enDescription: "",
     price: 0,
     categoryId: "",
     ingredients: "",
+    enIngredients: "",
     image: "",
     available: true,
   });
@@ -205,10 +217,13 @@ export default function MenuItemManager({ isAdmin = true }) {
       await createMenuItem(formattedItem);
       setNewItem({
         name: "",
+        enName: "",
         description: "",
+        enDescription: "",
         price: 0,
         categoryId: "",
         ingredients: "",
+        enIngredients: "",
         image: "",
         available: true,
       });
@@ -231,10 +246,13 @@ export default function MenuItemManager({ isAdmin = true }) {
     setEditingId(item._id);
     setEditForm({
       name: item.name,
+      enName: item.enName,
       description: item.description,
+      enDescription: item.enDescription,
       price: item.price,
       categoryId: item.categoryId,
       ingredients: item.ingredients || "",
+      enIngredients: item.enIngredients || "",
       image: item.image || "",
       available: item.available,
     });
@@ -386,12 +404,31 @@ export default function MenuItemManager({ isAdmin = true }) {
                 required
               />
             </div>
+            <div>
+              <Input
+                placeholder="عنوان لاتین"
+                value={newItem.enName}
+                onChange={(e) =>
+                  setNewItem({ ...newItem, enName: e.target.value })
+                }
+                required
+              />
+            </div>
             <div className="sm:col-span-2">
               <Textarea
                 placeholder="توضیحات (اختیاری)"
                 value={newItem.description}
                 onChange={(e) =>
                   setNewItem({ ...newItem, description: e.target.value })
+                }
+              />
+            </div>
+            <div className="sm:col-span-2">
+              <Textarea
+                placeholder="توضیحات لاتین (اختیاری)"
+                value={newItem.enDescription}
+                onChange={(e) =>
+                  setNewItem({ ...newItem, enDescription: e.target.value })
                 }
               />
             </div>
@@ -408,7 +445,7 @@ export default function MenuItemManager({ isAdmin = true }) {
                     required
                     className="w-24"
                 />
-                <Label className="text-xs">قیمت (هزار تومان)</Label>
+                <Label className="text-xs">قیمت (تومان)</Label>
             </div>
             <div>
               <Textarea
@@ -416,6 +453,15 @@ export default function MenuItemManager({ isAdmin = true }) {
                 value={newItem.ingredients}
                 onChange={(e) =>
                   setNewItem({ ...newItem, ingredients: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <Textarea
+                placeholder="مواد تشکیل دهنده لاتین (اختیاری)"
+                value={newItem.enIngredients}
+                onChange={(e) =>
+                  setNewItem({ ...newItem, enIngredients: e.target.value })
                 }
               />
             </div>
@@ -576,6 +622,19 @@ export default function MenuItemManager({ isAdmin = true }) {
                                               required
                                             />
                                           </div>
+                                          <div>
+                                            <Input
+                                              placeholder="عنوان لاتین"
+                                              value={editForm.enName}
+                                              onChange={(e) =>
+                                                setEditForm({
+                                                  ...editForm,
+                                                  enName: e.target.value,
+                                                })
+                                              }
+                                              required
+                                            />
+                                          </div>
                                           <div className="sm:col-span-2">
                                             <Textarea
                                               placeholder="توضیحات (اختیاری)"
@@ -584,6 +643,18 @@ export default function MenuItemManager({ isAdmin = true }) {
                                                 setEditForm({
                                                   ...editForm,
                                                   description: e.target.value,
+                                                })
+                                              }
+                                            />
+                                          </div>
+                                          <div className="sm:col-span-2">
+                                            <Textarea
+                                              placeholder="توضیحات لاتین (اختیاری)"
+                                              value={editForm.enDescription}
+                                              onChange={(e) =>
+                                                setEditForm({
+                                                  ...editForm,
+                                                  enDescription: e.target.value,
                                                 })
                                               }
                                             />
@@ -611,6 +682,18 @@ export default function MenuItemManager({ isAdmin = true }) {
                                                 setEditForm({
                                                   ...editForm,
                                                   ingredients: e.target.value,
+                                                })
+                                              }
+                                            />
+                                          </div>
+                                          <div>
+                                            <Textarea
+                                              placeholder="مواد تشکیل دهنده لاتین (اختیاری)"
+                                              value={editForm.enIngredients}
+                                              onChange={(e) =>
+                                                setEditForm({
+                                                  ...editForm,
+                                                  enIngredients: e.target.value,
                                                 })
                                               }
                                             />
