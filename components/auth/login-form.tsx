@@ -124,7 +124,7 @@ export default function LoginForm({
 
   if (step === "otp") {
     return (
-      <Card className="w-full max-w-md mx-auto">
+      <Card className="w-full bg-teal-700 rounded-none text-off-white max-w-md py-[102px] mx-auto">
         <CardHeader className="text-center">
           <CardTitle className="flex items-center justify-center gap-2">
             <Phone className="w-5 h-5" />
@@ -192,8 +192,8 @@ export default function LoginForm({
   }
 
   return (
-    <Card id="club" className="w-full max-w-md mx-auto">
-      <CardHeader className="text-center">
+    <Card id="club" className="w-full bg-teal-700 rounded-none text-off-white max-w-md py-[102px] mx-auto">
+      <CardHeader className="text-center text-golden_yellow mb-4">
         <CardTitle className="flex items-center justify-center gap-2">
           <LogIn className="w-5 h-5" />
           {showAsSignup ? t("auth.signup") : t("auth.login")}
