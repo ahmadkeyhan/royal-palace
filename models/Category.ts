@@ -5,6 +5,7 @@ import mongoose from "mongoose"
 export interface ICategory {
   _id?: mongoose.Types.ObjectId | string
   name: string
+  enName: string
   menu: "cafe" | "restaurant"
   order?: number
   createdAt?: Date
@@ -14,6 +15,7 @@ export interface ICategory {
 const categorySchema = new Schema<ICategory>(
   {
     name: { type: String, required: true },
+    enName: { type: String, required: true },
     menu: {
       type: String,
       enum: ["cafe", "restaurant"],

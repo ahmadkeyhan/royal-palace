@@ -9,6 +9,7 @@ import { Edit, Trash2, GripVertical } from "lucide-react"
 interface category {
     id: string, 
     name: string,
+    enName: string,
     menu: "cafe" | "restaurant",
     order: number
 }

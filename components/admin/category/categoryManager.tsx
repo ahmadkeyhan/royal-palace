@@ -38,21 +38,23 @@ import MenuSelector from "./menuSelector"
 interface category {
     id: string, 
     name: string,
+    enName: string,
     menu: "cafe" | "restaurant",
     order: number
 }
 
 type FormCategory = {
   name: string
+  enName: string
   menu: "cafe" | "restaurant"
 }
 
 export default function CategoryManager() {
   const [cafeCategories, setCafeCategories] = useState<category[]>([])
   const [restaurantCategories, setRestaurantCategories] = useState<category[]>([])
-  const [newCategory, setNewCategory] = useState<FormCategory>({ name: "", menu: "restaurant"})
+  const [newCategory, setNewCategory] = useState<FormCategory>({ name: "", enName: "", menu: "restaurant"})
   const [editingId, setEditingId] = useState<string>("")
-  const [editForm, setEditForm] = useState<FormCategory>({ name: "", menu: "restaurant"})
+  const [editForm, setEditForm] = useState<FormCategory>({ name: "", enName: "", menu: "restaurant"})
   const [isReordering, setIsReordering] = useState(false)
 
   // Set up sensors for drag and drop with improved mobile support
@@ -83,7 +85,7 @@ export default function CategoryManager() {
   }, [])
 
   useEffect(() => {
-    setNewCategory({ name: "", menu: "restaurant"})
+    setNewCategory({ name: "", enName: "", menu: "restaurant"})
   }, [cafeCategories, ])
 
   const loadCategories = async () => {
@@ -102,7 +104,7 @@ export default function CategoryManager() {
     e.preventDefault()
     try {
       await createCategory(newCategory)
-      setNewCategory({ name: "", menu: "restaurant"})
+      setNewCategory({ name: "", enName: "", menu: "restaurant"})
       await loadCategories()
       toast({
         title: "دسته‌بندی‌ ایجاد شد!",
@@ -119,7 +121,7 @@ export default function CategoryManager() {
 
   const handleEditClick = (category: category) => {
     setEditingId(category.id)
-    setEditForm({ name: category.name, menu: category.menu})
+    setEditForm({ name: category.name, enName: category.enName, menu: category.menu})
   }
 
   const handleUpdateSubmit = async (e: FormEvent) => {
@@ -258,6 +260,14 @@ export default function CategoryManager() {
             />
           </div>
           <div>
+            <Input
+              placeholder="عنوان لاتین"
+              value={newCategory.enName}
+              onChange={(e) => setNewCategory({ ...newCategory, enName: e.target.value })}
+              required
+            />
+          </div>
+          <div>
             <MenuSelector
               value={newCategory.menu}
               onChange={(menu) => setNewCategory({ ...newCategory, menu: menu === "cafe" ? "cafe" : "restaurant"})}
@@ -285,6 +295,14 @@ export default function CategoryManager() {
                             placeholder="عنوان دسته‌بندی"
                             value={editForm.name}
                             onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Input
+                            placeholder="عنوان لاتین"
+                            value={editForm.enName}
+                            onChange={(e) => setEditForm({ ...editForm, enName: e.target.value })}
                             required
                           />
                         </div>
@@ -333,6 +351,14 @@ export default function CategoryManager() {
                             placeholder="عنوان دسته‌بندی"
                             value={editForm.name}
                             onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Input
+                            placeholder="عنوان لاتین"
+                            value={editForm.enName}
+                            onChange={(e) => setEditForm({ ...editForm, enName: e.target.value })}
                             required
                           />
                         </div>
