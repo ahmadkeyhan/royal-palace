@@ -69,7 +69,7 @@ const TextMask = ({ text, inview, customStyles }: IHead) => {
       exit="exit"
       className={`${
         customStyles || ""
-      } overflow-hidden inline-block text-white`}
+      } overflow-hidden inline-block text-off-white`}
     >
       {text}
     </motion.p>

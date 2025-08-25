@@ -143,7 +143,7 @@ const HeroHeader = () => {
 
   return (
     <div className="w-full bg-regal_green pt-2">
-      <div className="flex justify-around gap-4 w-full m-auto text-white max-[900px]:items-center max-[760px]:flex-col">
+      <div className="flex justify-around gap-4 w-full m-auto text-off-white max-[900px]:items-center max-[760px]:flex-col">
         <div className="flex h-20 sm:h-32 pt-4 justify-center gap-1 overflow-hidden">
           {t('banner.title').split(' ').map((bank: string, index) => {
             return (
@@ -151,7 +151,7 @@ const HeroHeader = () => {
                 className={
                   `${bank}` == "PALACE" || `${bank}` == "پالاس" 
                     ? " flex items-center scroll-m-20 text-golden_yellow -tracking-tight  border-solid lg:text-8xl sm:text-7xl max-[330px]:text-[50px] max-[760px]:justify-center text-5xl"
-                    : " flex items-center scroll-m-20 text-white -tracking-tight  border-solid lg:text-8xl sm:text-7xl max-[330px]:text-[50px] max-[760px]:justify-center text-5xl"
+                    : " flex items-center scroll-m-20 text-off-white -tracking-tight  border-solid lg:text-8xl sm:text-7xl max-[330px]:text-[50px] max-[760px]:justify-center text-5xl"
                 }
                 key={index}
               >

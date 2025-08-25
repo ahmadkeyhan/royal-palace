@@ -25,7 +25,7 @@ const About_us = (props: Props) => {
 
   return (
     <AnimatePresence>
-      <div className="bg-regal_green w-full  h-full border-[1px] border-transparent  border-solid ">
+      <div className="bg-regal_green w-full text-off-white  h-full border-[1px] border-transparent  border-solid ">
         <div
           id="anchor"
           className="w-[95%] my-[70px] mx-auto max-[750px]:my-[100px]  border-solid  "
@@ -65,7 +65,7 @@ const About_us = (props: Props) => {
                       // </ImageReveal>
                     )}
                   </div>
-                  <div ref={ref2} className="text-white_text">
+                  <div ref={ref2} className="text-golden_yellow">
                     <p className="scroll-m-20 text-2xl font-semibold tracking-[.10em]">
                       {t("about.subtitle")}
                     </p>
@@ -101,7 +101,7 @@ const About_us = (props: Props) => {
                 <h1 className="min-[900px]:text-[80px] xl:text-[100px] sm:text-[70px] max-sm:text-3xl max-[330px]:text-[50px]  scroll-m-20  font-bold tracking-[.10em]  text-golden_yellow">
                   {t("about.title1")}
                 </h1>
-                <h1 className="lg:text-[100px] sm:text-[70px] max-sm:text-3xl  text-end text-white_text scroll-m-20 font-bold tracking-[.10em]">
+                <h1 className="lg:text-[100px] sm:text-[70px] max-sm:text-3xl  text-end text-off-white scroll-m-20 font-bold tracking-[.10em]">
                   {t("about.title2")}
                 </h1>
               </div>
