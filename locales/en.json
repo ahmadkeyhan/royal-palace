@@ -35,6 +35,8 @@
     "description": "Make a reservation for a suite.",
     "cta_primary": "Explore Menus",
     "cta_secondary": "Guest Guide",
+    "cta_third" : "Guests Club",
+    "cta_fourth" : "Survey",
     "check_in": "CHECK IN",
     "check_out": "CHECK OUT",
     "book": "BOOK ROOM"

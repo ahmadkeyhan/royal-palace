@@ -35,6 +35,8 @@
     "description": "جهت رزرو سوئیت اقدام کنید.",
     "cta_primary": "مشاهده‌ی منوها",
     "cta_secondary": "راهنمای مهمان",
+    "cta_third" : "باشگاه میهمانان",
+    "cta_fourth" : "نظرسنجی",
     "check_in": "ورود",
     "check_out": "خروج",
     "book": "رزرو اتاق"
