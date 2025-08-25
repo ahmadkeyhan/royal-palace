@@ -27,7 +27,7 @@ const config = {
         "hero-btn": "rgba(49, 63, 56, 0.48)",
         "hover-hero-btn": "rgba(33, 36, 35, 0.755)",
         "white_text": "#fff",
-        "golden_yellow": "rgba(252, 208, 67, 1)",
+        "golden_yellow": "rgba(250, 222, 131, 1)",
         "hover_golden_yellow": "rgb(142, 112, 16)",
         "text_royal_green": "#1B3B36",
         "off-white": "#FFFCF6",
