@@ -26,7 +26,7 @@ export async function getCategoryItems(categoryId: IMenuItem["categoryId"]) {
   try {
     await dbConnect();
     // Updated to sort by order first, then name, and only return available items for the main page
-    const items = await MenuItem.find({ categoryId, available: true }).sort({
+    const items = await MenuItem.find({ categoryId }).sort({
       order: 1,
       name: 1,
     });

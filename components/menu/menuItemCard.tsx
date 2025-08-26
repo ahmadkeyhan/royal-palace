@@ -18,6 +18,7 @@ interface item {
   enIngredients: string;
   image: string;
   order: number;
+  available: boolean;
 }
 
 export default function MenuItemCard({
@@ -59,7 +60,10 @@ export default function MenuItemCard({
       <div className="space-y-2 flex-1">
         <div className={`flex justify-between items-center ${menu === "cafe" ? "text-teal-700" : "text-white"}`}>
           <h2 className="font-bold text-base tracking-wider">{isRTL? item.name : item.enName}</h2>
-          <h3 className="font-semibold">{isRTL? formatCurrency(item.price) : `${Intl.NumberFormat().format(item.price)}T`}</h3>
+          {item.available ? 
+            <h3 className="font-semibold">{isRTL? formatCurrency(item.price) : `${Intl.NumberFormat().format(item.price)}T`}</h3> :
+            <h3 className="font-semibold font-ravi text-gray-400">{isRTL? "ناموجود" : "n/a"}</h3>
+          }
         </div>
         <p className="text-sm line-clamp-2 font-ravi">
           {isRTL? item.description : item.enDescription}

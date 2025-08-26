@@ -30,6 +30,7 @@ interface item {
   enIngredients: string;
   image: string;
   order: number;
+  available: boolean;
 }
 
 interface categoryItems {

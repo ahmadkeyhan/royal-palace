@@ -20,6 +20,7 @@ interface item {
   enIngredients: string;
   image: string;
   order: number;
+  available: boolean;
 }
 
 interface MenuItemModalProps {
@@ -72,7 +73,10 @@ export default function MenuItemModal({menu, item, categoryName, isOpen, onClose
                       <DialogTitle className="flex items-center gap-1">
                         {isRTL? item.name : item.enName}
                       </DialogTitle>        
-                      <h3 className="font-semibold">{isRTL? formatCurrency(item.price) : `${Intl.NumberFormat().format(item.price)}T`}</h3>
+                      {item.available ? 
+                        <h3 className="font-semibold">{isRTL? formatCurrency(item.price) : `${Intl.NumberFormat().format(item.price)}T`}</h3> :
+                        <h3 className="font-semibold font-ravi text-gray-400">{isRTL? "ناموجود" : "n/a"}</h3>
+                      }
                     </div>
                   </div>
 
