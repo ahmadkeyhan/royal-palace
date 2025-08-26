@@ -59,7 +59,7 @@ export default function MenuItemCard({
           <div className="flex items-center gap-1">
             <h2 className="font-bold text-base text-teal-700 tracking-widest">{isRTL? item.name : item.enName}</h2>
           </div>
-          <h3 className="font-semibold">{isRTL? formatCurrency(item.price) : Intl.NumberFormat().format(item.price)}</h3>
+          <h3 className="font-semibold">{isRTL? formatCurrency(item.price) : `${Intl.NumberFormat().format(item.price)}T`}</h3>
         </div>
         <p className="text-sm line-clamp-2 indent-2 font-ravi">
           {isRTL? item.description : item.enDescription}
