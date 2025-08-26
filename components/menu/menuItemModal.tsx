@@ -71,7 +71,7 @@ export default function MenuItemModal({ item, categoryName, isOpen, onClose }: M
                       <DialogTitle className="flex items-center gap-1 text-teal-700">
                         {isRTL? item.name : item.enName}
                       </DialogTitle>        
-                      <h3 className="font-semibold text-teal-700">{formatCurrency(item.price)}</h3>
+                      <h3 className="font-semibold text-teal-700">{isRTL? formatCurrency(item.price) : item.price}</h3>
                     </div>
                   </div>
 
