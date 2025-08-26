@@ -66,6 +66,13 @@ const Guide = (props: Props) => {
                     inView ? "items-end" : "items-end"
                     } max-[750px]:flex-col max-[650px]:items-center`}
                 >
+                    <ul className="grid grid-cols-2 w-full list-disc gap-x-6 px-4 mt-4 text-text_royal_green">
+                      <li className="col-span-2 mb-2 -mx-2 font-bold list-none">
+                          {t("guide.description.1")}
+                      </li>
+                      <li className="font-ravi">{t("guide.description.2")}</li>
+                      <li className="font-ravi">{t("guide.description.3")}</li>
+                    </ul>
                     <ul className="grid grid-cols-2 w-full list-disc gap-x-6 font-ravi px-4 mt-4 text-text_royal_green">
                     <li>{t("guide.description1.1")}</li>
                     <li>{t("guide.description1.2")}</li>

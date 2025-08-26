@@ -101,6 +101,11 @@
   "guide" : {
     "title1": "GUEST",
     "title2": "GUIDE",
+    "description": {
+      "1": "WI-FI PASSWORD",
+      "2": "Username: 100",
+      "3": "Password: 100"
+    },
     "description1": {
       "1":"Reception: 101-104",
       "2":"Cafe: 102",
