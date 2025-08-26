@@ -6,15 +6,18 @@ import { Dialog, DialogContent, DialogClose, DialogTitle } from "@/components/ui
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { formatCurrency } from "@/lib/utils"
-
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface item {
   id: string;
   name: string;
+  enName: string;
   description: string;
+  enDescription: string;
   price: number;
   // categoryName: string;
   ingredients: string;
+  enIngredients: string;
   image: string;
   order: number;
 }
@@ -28,10 +31,11 @@ interface MenuItemModalProps {
 
 export default function MenuItemModal({ item, categoryName, isOpen, onClose }: MenuItemModalProps) {
   if (!item) return null
+  const { isRTL } = useLanguage()
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden bg-white rounded-lg">
+      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden bg-white rounded-sm">
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -54,7 +58,7 @@ export default function MenuItemModal({ item, categoryName, isOpen, onClose }: M
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="absolute top-1 right-1 rounded-full bg-white/50 backdrop-blur-sm hover:bg-white/90 text-qqorange"
+                    className="absolute top-1 right-1 rounded-full bg-white/50 backdrop-blur-sm hover:bg-white/90 text-teal-600"
                   >
                   </Button>
                 </DialogClose>
@@ -64,20 +68,20 @@ export default function MenuItemModal({ item, categoryName, isOpen, onClose }: M
                 <div className="space-y-1">
                   <div className="flex justify-between items-start">
                     <div className="flex w-full justify-between">
-                      <DialogTitle className="flex items-center gap-1 text-qqdarkbrown">
-                        {item.name}
+                      <DialogTitle className="flex items-center gap-1 text-teal-700">
+                        {isRTL? item.name : item.enName}
                       </DialogTitle>        
-                      <h3 className="font-semibold text-qqdarkbrown">{formatCurrency(item.price)}</h3>
+                      <h3 className="font-semibold text-teal-700">{formatCurrency(item.price)}</h3>
                     </div>
                   </div>
 
                   <motion.p
-                    className="text-qqbrown px-2"
+                    className="text-text_royal_green px-2 font-ravi"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.1 }}
                   >
-                    {item.description}
+                    {isRTL? item.description : item.enDescription}
                   </motion.p>
                 </div>
                 {item.ingredients && (
@@ -86,7 +90,7 @@ export default function MenuItemModal({ item, categoryName, isOpen, onClose }: M
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                   >
-                    <p className="text-base text-qqbrown px-2.5">({item.ingredients})</p>
+                    <p className="text-base text-text_royal_green font-ravi px-2.5">({isRTL? item.ingredients : item.enIngredients})</p>
                   </motion.div>
                 )}
 
@@ -96,7 +100,7 @@ export default function MenuItemModal({ item, categoryName, isOpen, onClose }: M
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <Badge variant="outline" className="text-qqteal border-qqteal">
+                  <Badge variant="outline" className="text-teal-700 border-teal-700 font-ravi">
                     {categoryName || "آیتم منو"}
                   </Badge>
                 </motion.div>

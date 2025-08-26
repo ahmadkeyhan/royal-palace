@@ -8,10 +8,12 @@ import MenuItemCard from "./menuItemCard";
 import MenuItemModal from "./menuItemModal";
 import * as LucideIcons from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface category {
   id: string;
   name: string;
+  enName: string;
   menu: "cafe" | "restaurant";
   description: string;
 }
@@ -19,10 +21,13 @@ interface category {
 interface item {
   id: string;
   name: string;
+  enName: string;
   description: string;
+  enDescription: string;
   price: number;
   categoryId: string;
   ingredients: string;
+  enIngredients: string;
   image: string;
   order: number;
 }
@@ -64,6 +69,8 @@ export default function MenuCategories() {
   const [loadingCategories, setLoadingCategories] = useState(new Set())
   const [openCategories, setOpenCategories] = useState<string[]>([])
   const [modalCategoryName,setModalCategoryName] = useState<string>('')
+
+  const {isRTL} = useLanguage()
 
   useEffect(() => {
     const loadCategories = async () => {
@@ -134,7 +141,7 @@ export default function MenuCategories() {
   const handleItemClick = (item: item) => {
     setSelectedItem(item);
     categories.map((category) => {
-      if (category.id === item.categoryId) setModalCategoryName(category.name)
+      if (category.id === item.categoryId) setModalCategoryName(isRTL? category.name : category.enName)
     })
     setIsModalOpen(true);
   };
@@ -160,12 +167,12 @@ export default function MenuCategories() {
             <AccordionItem
               key={category.id}
               value={category.id}
-              className={`border border-teal-600 rounded-sm mb-4 overflow-hidden`}
+              className={`rounded-sm mb-4 overflow-hidden`}
             >
-              <AccordionTrigger className={`px-4 py-3 bg-off-white text-text_royal_green hover:no-underline`}>
+              <AccordionTrigger className={`px-4 py-3 bg-off-white text-teal-600 hover:no-underline`}>
                 <div className="flex items-center gap-2">
                   {/* {IconComponent && <IconComponent className="w-5 h-5 text-amber-600" />} */}
-                  <span className="font-medium">{category.name}</span>
+                  <span className="font-semibold text-lg tracking-widest text-teal-700 ">{isRTL? category.name : category.enName? category.enName.toUpperCase() : ""}</span>
                 </div>
               </AccordionTrigger>
               <AccordionContent className={`px-4 bg-off-white text-text_royal_green`}>
@@ -176,7 +183,7 @@ export default function MenuCategories() {
                         variants={spinnerVariants}
                         initial="initial"
                         animate="animate"
-                        className="w-5 h-5 text-amber-500 flex justify-center items-center"
+                        className="w-5 h-5 text-teal-600 flex justify-center items-center"
                       >
                         <LucideIcons.Loader2 />
                       </motion.div>
