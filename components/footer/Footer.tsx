@@ -49,6 +49,11 @@ const Footer: React.FC = (props: Props) => {
               <Button>{t("footer.review")}</Button>
             </Link>
           </div>
+          <div className="flex flex-col gap-1 items-center">
+            <p>{t("footer.contact1")}</p>
+            <p>{t("footer.contact2")}</p>
+            <p>{t("footer.contact3")}</p>
+          </div>
         </div>
         <div className="h-[1px] w-full bg-gray-200 mt-4"> </div>
         <div className="w-full">
