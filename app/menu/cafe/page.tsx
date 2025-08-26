@@ -15,7 +15,7 @@ export default function CafeMenu() {
           <div className="flex justify-center items-center text-qqteal gap-2 mb-2 py-4">
             <h1 className="text-4xl font-bold text-off-white">{isRTL? "منوی کافه" : "CAFE MENU"}</h1>
           </div>
-          <MenuCategories />
+          <MenuCategories menu="cafe" />
           
         </section>
       </div>

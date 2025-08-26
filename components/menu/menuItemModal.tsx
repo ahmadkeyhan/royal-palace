@@ -23,26 +23,27 @@ interface item {
 }
 
 interface MenuItemModalProps {
+  menu: string
   item: item | null
   categoryName: string
   isOpen: boolean
   onClose: () => void
 }
 
-export default function MenuItemModal({ item, categoryName, isOpen, onClose }: MenuItemModalProps) {
+export default function MenuItemModal({menu, item, categoryName, isOpen, onClose }: MenuItemModalProps) {
   if (!item) return null
   const { isRTL } = useLanguage()
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden bg-white rounded-sm">
+      <DialogContent className={`sm:max-w-[500px] p-0 overflow-hidden ${menu === "cafe" ? "bg-white" : "bg-regal_green"} rounded-sm`}>
         <AnimatePresence>
           {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.3 }}
+            <div
+              // initial={{ opacity: 0, y: 20 }}
+              // animate={{ opacity: 1, y: 0 }}
+              // exit={{ opacity: 0, y: 20 }}
+              // transition={{ duration: 0.3 }}
               className="flex flex-col"
             >
               <div className="relative w-full h-[200px] sm:h-[250px]">
@@ -65,47 +66,47 @@ export default function MenuItemModal({ item, categoryName, isOpen, onClose }: M
               </div>
 
               <div className="p-6 space-y-4">
-                <div className="space-y-1">
+                <div className="space-y-4">
                   <div className="flex justify-between items-start">
-                    <div className={`flex w-full justify-between ${isRTL? "font-doran" : "font-miracle"} tracking-wider`}>
-                      <DialogTitle className="flex items-center gap-1 text-teal-700">
+                    <div className={`flex w-full justify-between ${isRTL? "font-doran" : "font-miracle"} tracking-wider ${menu === "cafe" ? "text-teal-700" : "text-golden_yellow"}`}>
+                      <DialogTitle className="flex items-center gap-1">
                         {isRTL? item.name : item.enName}
                       </DialogTitle>        
-                      <h3 className="font-semibold text-teal-700">{isRTL? formatCurrency(item.price) : `${Intl.NumberFormat().format(item.price)}T`}</h3>
+                      <h3 className="font-semibold">{isRTL? formatCurrency(item.price) : `${Intl.NumberFormat().format(item.price)}T`}</h3>
                     </div>
                   </div>
 
-                  <motion.p
-                    className="text-text_royal_green px-2 font-ravi"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.1 }}
+                  <p
+                    className={`${menu === "cafe" ? "text-text_royal_green" : "text-off-white"} px-2 text-sm font-ravi`}
+                    // initial={{ opacity: 0 }}
+                    // animate={{ opacity: 1 }}
+                    // transition={{ delay: 0.1 }}
                   >
                     {isRTL? item.description : item.enDescription}
-                  </motion.p>
+                  </p>
                 </div>
                 {item.ingredients && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <p className="text-base text-text_royal_green font-ravi px-2.5">({isRTL? item.ingredients : item.enIngredients})</p>
-                  </motion.div>
+                  // <motion.div
+                  //   initial={{ opacity: 0, y: 10 }}
+                  //   animate={{ opacity: 1, y: 0 }}
+                  //   transition={{ delay: 0.2 }}
+                  // >
+                    <p className={`text-xs ${menu === "cafe" ? "text-text_royal_green" : "text-off-white"} font-ravi px-2.5`}>({isRTL? item.ingredients : item.enIngredients})</p>
+                  // </motion.div>
                 )}
 
-                <motion.div
+                {/* <motion.div
                   className="pt-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                >
-                  <Badge variant="outline" className="text-teal-700 border-teal-700 font-ravi">
+                > */}
+                  <Badge variant="outline" className={`${menu === "cafe" ? "text-teal-700 border-teal-700" : "text-golden_yellow border-golden_yellow"} font-ravi`}>
                     {categoryName || "آیتم منو"}
                   </Badge>
-                </motion.div>
+                {/* </motion.div> */}
               </div>
-            </motion.div>
+            </div>
           )}
         </AnimatePresence>
       </DialogContent>

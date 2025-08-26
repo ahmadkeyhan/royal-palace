@@ -21,9 +21,11 @@ interface item {
 }
 
 export default function MenuItemCard({
+  menu,
   item,
   onClick,
 }: {
+  menu: string;
   item: item;
   onClick: (item: item) => void;
 }) {
@@ -32,7 +34,7 @@ export default function MenuItemCard({
 
   return (
     <motion.div
-      className={`flex items-center gap-4 p-2 rounded-sm  bg-off-white text-text_royal_green hover:shadow-md transition-shadow cursor-pointer`}
+      className={`flex items-center gap-2 p-2 rounded-sm  ${menu === "cafe" ? "bg-white shadow-sm text-text_royal_green" : "bg-regal_green text-off-white"} hover:shadow-md transition-shadow cursor-pointer`}
       whileHover={{ y: -3 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
@@ -54,19 +56,17 @@ export default function MenuItemCard({
         />
       </div>
 
-      <div className="space-y-1 flex-1">
-        <div className="flex justify-between items-start">
-          <div className="flex items-center gap-1">
-            <h2 className="font-bold text-base text-teal-700 tracking-wider">{isRTL? item.name : item.enName}</h2>
-          </div>
+      <div className="space-y-2 flex-1">
+        <div className={`flex justify-between items-center ${menu === "cafe" ? "text-teal-700" : "text-white"}`}>
+          <h2 className="font-bold text-base tracking-wider">{isRTL? item.name : item.enName}</h2>
           <h3 className="font-semibold">{isRTL? formatCurrency(item.price) : `${Intl.NumberFormat().format(item.price)}T`}</h3>
         </div>
-        <p className="text-sm line-clamp-2 indent-2 font-ravi">
+        <p className="text-sm line-clamp-2 font-ravi">
           {isRTL? item.description : item.enDescription}
         </p>
         {item.ingredients && (
-          <p className="text-sm font-ravi">
-            {isRTL? item.ingredients : item.enIngredients}
+          <p className="text-xs font-ravi">
+            ({isRTL? item.ingredients : item.enIngredients})
           </p>
         )}
       </div>

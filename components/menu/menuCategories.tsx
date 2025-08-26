@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getCafeCategories } from "@/lib/data/categoryData";
+import { getCafeCategories, getRestaurantCategories } from "@/lib/data/categoryData";
 import { getCategoryItems } from "@/lib/data/itemData";
 import MenuItemCard from "./menuItemCard";
 import MenuItemModal from "./menuItemModal";
@@ -61,7 +61,7 @@ const spinnerVariants = {
   },
 }
 
-export default function MenuCategories() {
+export default function MenuCategories({menu} : {menu : string}) {
   const [categories, setCategories] = useState<category[]>([]);
   const [categoryItems, setCategoryItems] = useState<categoryItems>({})
   const [selectedItem, setSelectedItem] = useState<item | null>(null);
@@ -74,7 +74,7 @@ export default function MenuCategories() {
 
   useEffect(() => {
     const loadCategories = async () => {
-      const data = await getCafeCategories();
+      const data = menu === "cafe" ? await getCafeCategories() : await getRestaurantCategories();
       setCategories(data);
     };
 
@@ -169,13 +169,13 @@ export default function MenuCategories() {
               value={category.id}
               className={`rounded-sm mb-4 overflow-hidden`}
             >
-              <AccordionTrigger className={`px-4 py-3 bg-off-white text-teal-600 hover:no-underline`}>
+              <AccordionTrigger className={`px-4 py-3 ${menu === "cafe" ? "bg-off-white text-teal-700" : "bg-text_royal_green/40 text-golden_yellow"} hover:no-underline`}>
                 <div className="flex items-center gap-2">
                   {/* {IconComponent && <IconComponent className="w-5 h-5 text-amber-600" />} */}
-                  <span className="font-semibold text-lg tracking-widest text-teal-700 ">{isRTL? category.name : category.enName? category.enName.toUpperCase() : ""}</span>
+                  <span className="font-semibold text-lg tracking-widest">{isRTL? category.name : category.enName? category.enName.toUpperCase() : ""}</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className={`px-4 bg-off-white text-text_royal_green`}>
+              <AccordionContent className={`px-2 ${menu === "cafe" ? "bg-off-white text-text_royal_green" : "bg-text_royal_green/40 text-off-white"}`}>
                 {isLoading ? (
                   <div className="py-12 flex justify-center items-center">
                   <div className="flex space-x-3">
@@ -194,19 +194,19 @@ export default function MenuCategories() {
                     <p>آیتمی در این دسته‌بندی وجود ندارد.</p>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2 py-4">
                     <AnimatePresence>
                       {items.map((item, index) => (
-                        <motion.div
-                          key={item.name}
-                          variants={itemVariants}
-                          initial="hidden"
-                          animate="visible"
-                          exit="hidden"
-                          transition={{ delay: index * 0.05 }}
-                        >
-                          <MenuItemCard item={item} onClick={handleItemClick} />
-                        </motion.div>
+                        // <motion.div
+                        //   key={item.name}
+                        //   variants={itemVariants}
+                        //   initial="hidden"
+                        //   animate="visible"
+                        //   exit="hidden"
+                        //   transition={{ delay: index * 0.05 }}
+                        // >
+                          <MenuItemCard menu={menu} item={item} onClick={handleItemClick} />
+                        // </motion.div>
                       ))}
                     </AnimatePresence>
                   </div>
@@ -232,7 +232,7 @@ export default function MenuCategories() {
         </div>
       )}
 
-      <MenuItemModal item={selectedItem} categoryName={modalCategoryName} isOpen={isModalOpen} onClose={handleCloseModal} />
+      <MenuItemModal menu={menu} item={selectedItem} categoryName={modalCategoryName} isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }
