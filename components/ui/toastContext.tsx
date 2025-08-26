@@ -103,7 +103,7 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
   return (
     <div
       className={cn(
-        "rounded-lg shadow-md border p-4 transform transition-all duration-300 ease-in-out",
+        "rounded-lg shadow-md font-ravi border p-4 transform transition-all duration-300 ease-in-out",
         bgColor[toast.type],
         "animate-in slide-in-from-right",
       )}
@@ -118,7 +118,7 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
           <X size={16} />
         </button>
       </div>
-      {toast.description && <p className={cn("text-base mt-1", textColor[toast.type])}>{toast.description}</p>}
+      {toast.description && <p className={cn("text-sm mt-1", textColor[toast.type])}>{toast.description}</p>}
     </div>
   )
 }
