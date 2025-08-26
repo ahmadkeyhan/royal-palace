@@ -67,7 +67,7 @@ export default function MenuItemModal({ item, categoryName, isOpen, onClose }: M
               <div className="p-6 space-y-4">
                 <div className="space-y-1">
                   <div className="flex justify-between items-start">
-                    <div className={`flex w-full justify-between ${isRTL? "font-doran" : "font-miracle"} tracking-widest`}>
+                    <div className={`flex w-full justify-between ${isRTL? "font-doran" : "font-miracle"} tracking-wider`}>
                       <DialogTitle className="flex items-center gap-1 text-teal-700">
                         {isRTL? item.name : item.enName}
                       </DialogTitle>        

@@ -57,7 +57,7 @@ export default function MenuItemCard({
       <div className="space-y-1 flex-1">
         <div className="flex justify-between items-start">
           <div className="flex items-center gap-1">
-            <h2 className="font-bold text-base text-teal-700 tracking-widest">{isRTL? item.name : item.enName}</h2>
+            <h2 className="font-bold text-base text-teal-700 tracking-wider">{isRTL? item.name : item.enName}</h2>
           </div>
           <h3 className="font-semibold">{isRTL? formatCurrency(item.price) : `${Intl.NumberFormat().format(item.price)}T`}</h3>
         </div>
