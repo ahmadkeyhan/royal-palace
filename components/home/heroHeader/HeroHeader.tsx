@@ -168,25 +168,25 @@ const HeroHeader = () => {
             </p>
           </div>
           <div className="flex justify-center font-ravi items-center gap-6 mb-2">
-            <Link href="/menu">
-              <Button variant="default">
+            <Link href="/menu" className="w-full grow">
+              <Button variant="default" className="w-full">
                 {t("banner.cta_primary")}
               </Button>
             </Link>
-            <AnchorLink href="#guide">
-              <Button variant="outline">
+            <AnchorLink href="#guide" className="w-full grow">
+              <Button variant="outline" className="w-full">
                 {t("banner.cta_secondary")}
               </Button>
             </AnchorLink>
           </div>
           <div className="flex justify-center font-ravi items-center gap-6 mb-6">
-            <AnchorLink href="#club">
-              <Button variant="outline">
+            <AnchorLink href="#club" className="w-full grow">
+              <Button variant="outline" className="w-full">
                 {t("banner.cta_third")}
               </Button>
             </AnchorLink>
-            <AnchorLink href="#comment">
-              <Button variant="outline">
+            <AnchorLink href="#comment" className="w-full grow">
+              <Button variant="outline" className="w-full">
                 {t("banner.cta_fourth")}
               </Button>
             </AnchorLink>
