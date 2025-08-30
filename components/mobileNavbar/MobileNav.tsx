@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "../ui/button";
-import { User, LogOut } from "lucide-react";
+import { User, LogOut, MapPin } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 
@@ -90,7 +90,7 @@ const MobileNav = React.memo((props: IMenuState) => {
         exit="exit"
         className="fixed top-[0px] left-0 z-20 h-[100%] w-[100%] origin-top bg-regal_green min-[1200px]:hidden max-[1200px]:block"
       >
-        <div className="flex flex-col items-start justify-between h-full gap-[20px] pb-3 ">
+        <div className="flex flex-col items-center justify-between h-full gap-[20px] pb-3 ">
           <div className="flex items-center justify-between  w-[95%] mx-auto ">
             <h1 className="text-[28px] w-full tracking-tight first:mt-2">
               {t('common.royal_palace')}
@@ -139,7 +139,7 @@ const MobileNav = React.memo((props: IMenuState) => {
                   onClick={() => props.setMenuState((prev: boolean) => !prev)}
                 >
                   <Button variant="outline" size="sm" className="text-off-white hover:bg-golden_yellow">
-                      {session?.user ? session.user.name : "پنل ادمین"}
+                      {session?.user ? session.user.name : t("header.navigation.admin")}
                       <User className="w-4 h-4" />
                   </Button>
                 </Link>
@@ -156,19 +156,34 @@ const MobileNav = React.memo((props: IMenuState) => {
               </div>
             </motion.div>
           </AnimatePresence>
-          <div className="flex flex-col  w-full items-center gap-[20px]">
-            <p className=" text-center [&:not(:first-child)]:mt-2 min-[1200px]:text-[30px] min-[800px]:text-[27px] min-[500px]:text-[24px] max-[500px]:text-[20px] ">
-              {" "}
-              +234 781 52 952{" "}
+          <div className="flex flex-col items-center gap-4 mb-4">
+            <div className="overflow-hidden h-full max-w-full rounded-md">
+              <div
+                id="canvas-for-googlemap"
+                className="h-full w-full max-w-full"
+              >
+                <iframe
+                  className="h-full w-full border-0"
+                  src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.4179162377595!2d46.35748229999998!3d38.03734750000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x401a1b0d40808d93%3A0xc97da41ee479c45!2sRoyal%20palace%20hotel!5e0!3m2!1sen!2sus!4v1756213735325!5m2!1sen!2sus`}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+            <p className="text-sm text-off-white flex gap-1">
+              <span>
+                <MapPin className="w-4 h-4" />
+              </span>
+              {t("footer.address")}
             </p>
-            <p className="leading-7 text-center underline underline-offset-1  ">
-              6A - ANTHONY HOROWITZ WAY, LEKKI{" "}
-            </p>
-            <ul className="flex items-center justify-center gap-[20px]  ">
-              <li>FACEBOOK</li>
-              <li>INSTAGRAM</li>
-              <li>TWITTER</li>
-            </ul>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.google.com/search?q=royal+palace+tabriz&rlz=1C1GCEA_enIR1090IR1090&oq=ro&gs_lcrp=EgZjaHJvbWUqDggDEEUYJxg7GIAEGIoFMgYIABBFGDwyBwgBEC4YgAQyBggCEEUYOTIOCAMQRRgnGDsYgAQYigUyBggEEEUYPDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDI3NTlqMGo0qAIDsAIB8QW7BGi2AHIrOA&sourceid=chrome&ie=UTF-8#lrd=0x401a1b0d40808d93:0xc97da41ee479c45,3,,,,"
+            >
+              <Button>{t("footer.review")}</Button>
+            </Link>
           </div>
         </div>
       </motion.div>
