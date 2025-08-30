@@ -96,17 +96,18 @@ const Guide = (props: Props) => {
                     </li>
                     <li className="font-ravi">{t("guide.description3.2")}</li>
                     <li className="font-ravi">{t("guide.description3.3")}</li>
+                    <li className="font-ravi">{t("guide.description3.4")}</li>
                     <li className="col-span-2 mt-2 text-gray-400 -mx-2 text-sm list-none">
-                        {t("guide.description3.4")}
+                        {t("guide.description3.5")}
                     </li>
                     </ul>
                     <ul className="grid grid-cols-2 w-full list-disc gap-x-6 px-4 mt-4 text-text_royal_green">
-                    <li className="font-ravi">{t("guide.description3.5")}</li>
                     <li className="font-ravi">{t("guide.description3.6")}</li>
                     <li className="font-ravi">{t("guide.description3.7")}</li>
                     <li className="font-ravi">{t("guide.description3.8")}</li>
+                    <li className="font-ravi">{t("guide.description3.9")}</li>
                     <li className="col-span-2 mt-2 mb-4 text-gray-400 -mx-2 text-sm list-none">
-                        {t("guide.description3.9")}
+                        {t("guide.description3.10")}
                     </li>
                     </ul>
                 </motion.div>
